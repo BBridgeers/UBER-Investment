@@ -73,8 +73,8 @@ DEFAULT_SCENARIOS = {
         "sales_tax": 31.92,
         "electricity_weekly": 15.54,
         "bike_cost": 50.0,
-        "ulock_cost": 30.0,
-        "initial_investment": 666.86,
+        "ulock_cost": 20.0,
+        "initial_investment": 656.86,
         "yoga_monthly": 320.0
     },
     "beater_car": {
