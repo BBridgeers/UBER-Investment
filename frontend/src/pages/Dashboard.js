@@ -114,7 +114,7 @@ const Dashboard = () => {
               )}
             </button>
             <div className="header-stat">
-              <div className="stat-value">$666.86</div>
+              <div className="stat-value">$656.86</div>
               <div className="stat-label">Initial Investment</div>
             </div>
             <div className="header-stat">
