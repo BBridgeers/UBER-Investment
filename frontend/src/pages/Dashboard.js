@@ -59,6 +59,19 @@ const Dashboard = () => {
     }
   };
 
+  const handleGeneratePDF = async () => {
+    setGeneratingPDF(true);
+    try {
+      await generatePDF(calculations, defaultData);
+      // Success - PDF downloaded
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('Error generating PDF. Please try again.');
+    } finally {
+      setGeneratingPDF(false);
+    }
+  };
+
   if (loading) {
     return (
       <div className="loading-screen">
