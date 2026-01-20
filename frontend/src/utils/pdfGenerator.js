@@ -247,7 +247,7 @@ export const generatePDF = async (calculations, defaultData) => {
   yPos = 60;
   
   const recommendations = [
-    `✓ Initial Ask: $666.86 (AVIS rental + bike + U-lock + deposit)`,
+    `✓ Initial Ask: $656.86 (AVIS rental + bike + U-lock + deposit)`,
     `✓ Strategy: AVIS Mach-E rental at 48 hours/week`,
     `✓ Break-Even: ${calculations.avis_rental.break_even_weeks} weeks`,
     `✓ 6-Month Net Profit: $${calculations.avis_rental.six_month_net.toLocaleString()}`,
