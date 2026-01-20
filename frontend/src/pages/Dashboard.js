@@ -8,6 +8,7 @@ import IncomeProjection from '../components/IncomeProjection';
 import PsychologicalBenefits from '../components/PsychologicalBenefits';
 import InteractiveCalculator from '../components/InteractiveCalculator';
 import ScenarioManager from '../components/ScenarioManager';
+import { generatePDF } from '../utils/pdfGenerator';
 import './Dashboard.css';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -18,6 +19,7 @@ const Dashboard = () => {
   const [calculations, setCalculations] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
+  const [generatingPDF, setGeneratingPDF] = useState(false);
 
   useEffect(() => {
     fetchData();
