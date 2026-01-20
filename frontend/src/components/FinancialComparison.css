@@ -1,0 +1,228 @@
+/* Financial Comparison Styles */
+
+.financial-comparison {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.comparison-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0.5rem;
+}
+
+/* Chart Sections */
+.chart-section {
+  background: rgba(26, 26, 26, 0.8);
+  border: 2px solid rgba(255, 215, 0, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.chart-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0.25rem;
+  border-radius: 8px;
+}
+
+.toggle-btn {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+  color: #FFD700;
+}
+
+.toggle-btn.active {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(184, 115, 51, 0.2) 100%);
+  color: #FFD700;
+}
+
+/* Comparison Table */
+.comparison-table-section {
+  background: rgba(26, 26, 26, 0.8);
+  border: 2px solid rgba(255, 215, 0, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+.comparison-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  align-items: center;
+}
+
+.table-row.table-header {
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  font-weight: 700;
+}
+
+.table-row.highlight {
+  background: rgba(255, 215, 0, 0.05);
+  border-left: 3px solid #FFD700;
+}
+
+.table-cell {
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+.table-cell.metric-label {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+}
+
+.table-cell.positive {
+  color: #4ade80;
+}
+
+.table-cell.negative {
+  color: #f87171;
+}
+
+.table-cell.bold {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+/* Winner Section */
+.winner-section {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(184, 115, 51, 0.15) 100%);
+  border: 3px solid rgba(255, 215, 0, 0.4);
+  border-radius: 24px;
+  padding: 3rem;
+  text-align: center;
+}
+
+.winner-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.winner-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 2rem;
+}
+
+.winner-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.winner-stat {
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 16px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.winner-stat .stat-value {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.winner-stat .stat-label {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.winner-description {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .table-row {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .table-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .table-cell {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .table-cell.metric-label::before {
+    content: '';
+    display: block;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .chart-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .winner-title {
+    font-size: 1.75rem;
+  }
+}
