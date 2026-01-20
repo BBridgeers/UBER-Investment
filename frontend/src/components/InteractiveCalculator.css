@@ -1,0 +1,6 @@
+.interactive-calculator { padding: 2rem; }
+.calculator-card { background: rgba(26, 26, 26, 0.8); border: 2px solid rgba(255, 215, 0, 0.2); border-radius: 16px; padding: 2rem; }
+.input-group { margin-bottom: 2rem; }
+.input-group label { display: block; color: #FFD700; font-weight: 600; margin-bottom: 0.5rem; }
+.input-group input[type="range"] { width: 100%; height: 8px; background: rgba(255, 215, 0, 0.2); border-radius: 5px; outline: none; }
+.input-group input[type="range"]::-webkit-slider-thumb { appearance: none; width: 20px; height: 20px; background: #FFD700; border-radius: 50%; cursor: pointer; }
