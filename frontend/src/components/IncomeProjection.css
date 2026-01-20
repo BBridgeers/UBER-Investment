@@ -1,2 +1,337 @@
-.income-projection { padding: 2rem; }
-.projection-content { background: rgba(26, 26, 26, 0.8); border: 2px solid rgba(255, 215, 0, 0.2); border-radius: 16px; padding: 2rem; }
+/* Income Projection Styles */
+
+.income-projection {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.projection-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Scenario Selector */
+.scenario-selector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.scenario-btn {
+  padding: 1.5rem;
+  background: rgba(26, 26, 26, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.scenario-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.2);
+}
+
+.scenario-btn.active {
+  background: rgba(255, 215, 0, 0.1);
+  border-width: 3px;
+  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.3);
+}
+
+.scenario-btn-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.scenario-btn-rate {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #FFD700;
+}
+
+/* Summary Cards */
+.scenario-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.summary-card {
+  background: rgba(26, 26, 26, 0.8);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.summary-card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.summary-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.summary-value {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.summary-label {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.summary-detail {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Chart Controls */
+.chart-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.view-mode-toggle {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.mode-btn {
+  padding: 0.75rem 2rem;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mode-btn:hover {
+  color: #FFD700;
+  background: rgba(255, 215, 0, 0.05);
+}
+
+.mode-btn.active {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(184, 115, 51, 0.2) 100%);
+  color: #FFD700;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+/* Timeline Section */
+.timeline-section {
+  background: rgba(26, 26, 26, 0.8);
+  border: 2px solid rgba(255, 215, 0, 0.2);
+  border-radius: 24px;
+  padding: 2.5rem;
+}
+
+/* Milestones */
+.milestones-section {
+  margin-top: 2rem;
+}
+
+.milestone-icon {
+  font-size: 1.75rem;
+}
+
+.milestones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.milestone-card {
+  background: rgba(26, 26, 26, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.milestone-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #FFD700 0%, #B87333 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s ease;
+}
+
+.milestone-card:hover::before {
+  transform: scaleX(1);
+}
+
+.milestone-card:hover {
+  border-color: rgba(255, 215, 0, 0.4);
+  transform: translateY(-5px);
+}
+
+.milestone-card.highlight {
+  border-color: rgba(255, 215, 0, 0.5);
+  background: rgba(255, 215, 0, 0.05);
+}
+
+.milestone-number {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 215, 0, 0.2);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 20px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #FFD700;
+  margin-bottom: 1rem;
+}
+
+.milestone-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.milestone-description {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.milestone-value {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #4ade80;
+}
+
+/* All Scenarios Comparison */
+.all-scenarios-section {
+  background: rgba(26, 26, 26, 0.8);
+  border: 2px solid rgba(184, 115, 51, 0.3);
+  border-radius: 24px;
+  padding: 2.5rem;
+}
+
+.scenarios-comparison-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.comparison-table-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.comparison-table-row.table-header {
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  font-weight: 700;
+  color: #FFD700;
+}
+
+.comparison-table-row.selected {
+  background: rgba(255, 215, 0, 0.15);
+  border: 2px solid rgba(255, 215, 0, 0.5);
+}
+
+.comparison-table-row:not(.table-header):hover {
+  background: rgba(0, 0, 0, 0.5);
+  transform: translateX(5px);
+}
+
+.table-cell {
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+.table-cell.scenario-name {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.table-cell.net-value {
+  color: #4ade80;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+}
+
+.table-cell.total-value {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: #FFD700;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .scenario-selector {
+    grid-template-columns: 1fr;
+  }
+
+  .comparison-table-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .table-cell {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .table-cell:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .summary-value {
+    font-size: 2rem;
+  }
+
+  .milestones-grid {
+    grid-template-columns: 1fr;
+  }
+}
