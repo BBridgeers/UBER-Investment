@@ -95,6 +95,24 @@ const Dashboard = () => {
             </h1>
           </div>
           <div className="header-right">
+            <button 
+              className="pdf-export-btn"
+              onClick={handleGeneratePDF}
+              disabled={generatingPDF}
+              data-testid="export-pdf-button"
+            >
+              {generatingPDF ? (
+                <>
+                  <span className="btn-icon">⏳</span>
+                  <span>Generating...</span>
+                </>
+              ) : (
+                <>
+                  <span className="btn-icon">📄</span>
+                  <span>Export PDF</span>
+                </>
+              )}
+            </button>
             <div className="header-stat">
               <div className="stat-value">$666.86</div>
               <div className="stat-label">Initial Investment</div>
