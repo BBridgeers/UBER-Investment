@@ -41,7 +41,7 @@ class ScenarioInputs(BaseModel):
     charging_strategy: ChargingStrategy = Field(default_factory=ChargingStrategy)
     months: int = 6
     bike_cost: float = 50.0
-    ulock_cost: float = 30.0
+    ulock_cost: float = 20.0
     avis_deposit: float = 200.0
 
 class ScenarioCalculation(BaseModel):
