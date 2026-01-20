@@ -169,7 +169,8 @@ def calculate_scenario(inputs: ScenarioInputs, scenario_type: str = "avis_rental
         weekly_costs = avis_weekly + sales_tax_weekly + electricity_weekly
         monthly_costs = weekly_costs * 4.33
         
-        initial_investment = inputs.bike_cost + inputs.ulock_cost + avis_weekly + sales_tax_weekly + inputs.avis_deposit
+        # Initial investment: bike + u-lock + AVIS rental + deposit (sales tax paid week 1, not upfront)
+        initial_investment = inputs.bike_cost + inputs.ulock_cost + avis_weekly + inputs.avis_deposit
         
     elif scenario_type == "beater_car":
         # Beater car costs
