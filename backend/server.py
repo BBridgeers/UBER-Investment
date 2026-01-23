@@ -6,9 +6,14 @@ import os
 import logging
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict
-from typing import List, Optional, Dict
+from typing import List, Optional, Dict, Any
 import uuid
 from datetime import datetime, timezone
+import json
+
+# Import model engine and baseline data
+from model_engine import Assumptions, compute_weekly_engine, rollup_4wk, rollup_13wk, rollup_3period, roi
+import baseline_data
 
 
 ROOT_DIR = Path(__file__).parent
