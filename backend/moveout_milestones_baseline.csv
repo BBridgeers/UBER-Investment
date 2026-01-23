@@ -1,0 +1,25 @@
+Scenario_hourly_rate_usd_per_hr,Milestone,Target_amount_usd,Description,Week_achieved,Cumulative_at_achieved_usd,Status
+20,Safety Net (1 week emergency),669.67,One week of net earnings held in reserve,5.0,921.49,Achieved Week 5
+20,Emergency Fund 25%,1000.0,"$1,000 liquid emergency fund (25% goal)",6.0,1183.16,Achieved Week 6
+20,Emergency Fund 50%,2000.0,"$2,000 liquid emergency fund (50% goal)",10.0,2229.84,Achieved Week 10
+20,Emergency Fund 100%,4000.0,"$4,000 liquid emergency fund (full goal)",17.0,4061.53,Achieved Week 17
+20,Housing Deposit 25%,5000.0,"$5,000 toward security deposit (25% of $20k)",21.0,5108.21,Achieved Week 21
+20,Housing Deposit 50%,10000.0,"$10,000 toward security deposit (50% of $20k)",,6416.56,"Not reached by Week 26 (proj: 6,416.56)"
+20,Housing Deposit 75%,15000.0,"$15,000 toward security deposit (75% of $20k)",,6416.56,"Not reached by Week 26 (proj: 6,416.56)"
+20,Move-Out Ready,20000.0,Full security deposit + moving costs,,6416.56,"Not reached by Week 26 (proj: 6,416.56)"
+23,Safety Net (1 week emergency),669.67,One week of net earnings held in reserve,4.0,1005.42,Achieved Week 4
+23,Emergency Fund 25%,1000.0,"$1,000 liquid emergency fund (25% goal)",4.0,1005.42,Achieved Week 4
+23,Emergency Fund 50%,2000.0,"$2,000 liquid emergency fund (50% goal)",7.0,2049.63,Achieved Week 7
+23,Emergency Fund 100%,4000.0,"$4,000 liquid emergency fund (full goal)",13.0,4138.05,Achieved Week 13
+23,Housing Deposit 25%,5000.0,"$5,000 toward security deposit (25% of $20k)",16.0,5182.26,Achieved Week 16
+23,Housing Deposit 50%,10000.0,"$10,000 toward security deposit (50% of $20k)",,8662.96,"Not reached by Week 26 (proj: 8,662.96)"
+23,Housing Deposit 75%,15000.0,"$15,000 toward security deposit (75% of $20k)",,8662.96,"Not reached by Week 26 (proj: 8,662.96)"
+23,Move-Out Ready,20000.0,Full security deposit + moving costs,,8662.96,"Not reached by Week 26 (proj: 8,662.96)"
+26,Safety Net (1 week emergency),669.67,One week of net earnings held in reserve,3.0,916.55,Achieved Week 3
+26,Emergency Fund 25%,1000.0,"$1,000 liquid emergency fund (25% goal)",4.0,1351.02,Achieved Week 4
+26,Emergency Fund 50%,2000.0,"$2,000 liquid emergency fund (50% goal)",6.0,2219.96,Achieved Week 6
+26,Emergency Fund 100%,4000.0,"$4,000 liquid emergency fund (full goal)",11.0,4392.31,Achieved Week 11
+26,Housing Deposit 25%,5000.0,"$5,000 toward security deposit (25% of $20k)",13.0,5261.25,Achieved Week 13
+26,Housing Deposit 50%,10000.0,"$10,000 toward security deposit (50% of $20k)",24.0,10040.42,Achieved Week 24
+26,Housing Deposit 75%,15000.0,"$15,000 toward security deposit (75% of $20k)",,10909.36,"Not reached by Week 26 (proj: 10,909.36)"
+26,Move-Out Ready,20000.0,Full security deposit + moving costs,,10909.36,"Not reached by Week 26 (proj: 10,909.36)"
