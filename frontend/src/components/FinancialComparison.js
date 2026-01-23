@@ -8,20 +8,29 @@ const FinancialComparison = ({ calculations }) => {
   if (!calculations) return null;
 
   const { avis_rental, beater_car, hybrid } = calculations;
+  
+  // Safety check for projections
+  if (!avis_rental || !avis_rental.projections || avis_rental.projections.length === 0) {
+    return (
+      <div className="financial-comparison">
+        <div className="loading-message">Loading financial data...</div>
+      </div>
+    );
+  }
 
-  // Prepare chart data
+  // Prepare chart data with safety checks
   const monthlyData = avis_rental.projections.map((month, index) => ({
-    month: `Month ${month.month}`,
-    AVIS: avis_rental.projections[index].net,
-    Beater: beater_car.projections[index].net,
-    Hybrid: hybrid.projections[index].net
+    month: `Block ${index + 1}`,
+    AVIS: month.net_after_dad_plus_yoga || month.net || 0,
+    Beater: beater_car.projections?.[index]?.net || 0,
+    Hybrid: hybrid.projections?.[index]?.net || 0
   }));
 
   const cumulativeData = avis_rental.projections.map((month, index) => ({
-    month: `Month ${month.month}`,
-    AVIS: avis_rental.projections[index].cumulative,
-    Beater: beater_car.projections[index].cumulative,
-    Hybrid: hybrid.projections[index].cumulative
+    month: `Block ${index + 1}`,
+    AVIS: month.cumulative_net_after_dad_plus_yoga || month.cumulative || 0,
+    Beater: beater_car.projections?.[index]?.cumulative || 0,
+    Hybrid: hybrid.projections?.[index]?.cumulative || 0
   }));
 
   const costBreakdown = [
