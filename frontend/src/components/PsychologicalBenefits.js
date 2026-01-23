@@ -79,10 +79,10 @@ const PsychologicalBenefits = ({ benefits }) => {
       category: 'Mental Wellbeing',
       icon: '🧘',
       improvements: [
-        'Break 2-year cycle of feeling "trapped"',
-        'Reduce anxiety about transportation reliability',
+        'Achieve transportation independence and freedom',
+        'Build confidence through financial self-sufficiency',
         'Increase sense of control over life direction',
-        'Build confidence through financial achievement'
+        'Strengthen mental resilience through achievement'
       ],
       color: '#60a5fa'
     }
