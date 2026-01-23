@@ -9,34 +9,34 @@ const PsychologicalBenefits = ({ benefits }) => {
   const impactMetrics = [
     {
       icon: '💼',
-      value: 84,
+      value: 67,
       suffix: '%',
-      label: 'Non-Car Owners Refuse Jobs',
-      description: 'Due to transportation barriers',
-      color: '#f87171'
+      label: 'Increased Job Access',
+      description: 'With vehicle ownership',
+      color: '#4ade80'
     },
     {
       icon: '📈',
-      value: 67,
-      suffix: '%',
-      label: 'Higher Employment Access',
-      description: 'With vehicle ownership',
-      color: '#4ade80'
+      value: 2.7,
+      suffix: 'x',
+      label: 'More Opportunities Available',
+      description: 'Compared to non-vehicle owners',
+      color: '#FFD700'
     },
     {
       icon: '🧠',
       value: 2.3,
       suffix: '% - 3.3%',
-      label: 'Depression Reduction',
+      label: 'Wellbeing Improvement',
       description: 'Independent of income level',
-      color: '#FFD700'
+      color: '#60a5fa'
     },
     {
       icon: '⏰',
-      value: 2,
-      suffix: ' years',
-      label: 'Mental Prison Duration',
-      description: 'Without vehicle independence',
+      value: 1,
+      suffix: ' week',
+      label: 'Freedom Achieved',
+      description: 'Break-even to independence',
       color: '#B87333'
     }
   ];
