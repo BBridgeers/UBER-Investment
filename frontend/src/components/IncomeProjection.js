@@ -296,7 +296,7 @@ const IncomeProjection = ({ calculations }) => {
             <div className="milestone-number">Week 1</div>
             <div className="milestone-title">Break-Even Achieved</div>
             <div className="milestone-description">
-              Initial investment of $666.86 covered by first week's earnings. 
+              Initial investment of $686.86 covered by first week's earnings. 
               All subsequent weeks are pure profit.
             </div>
             <div className="milestone-value">$0 net (break-even)</div>
