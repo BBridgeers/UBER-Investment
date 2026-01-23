@@ -280,8 +280,8 @@ const PsychologicalBenefits = ({ benefits }) => {
             <div className="timeline-content">
               <h5>Future Planning Enabled</h5>
               <p>
-                Accumulated savings allow thinking beyond immediate survival. 
-                Can plan for independent housing, career advancement, personal goals.
+                Accumulated savings enable thinking about growth opportunities. 
+                Planning for independent housing, career advancement, and personal goals becomes reality.
               </p>
             </div>
           </div>
