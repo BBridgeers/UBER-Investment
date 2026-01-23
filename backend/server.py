@@ -163,7 +163,45 @@ PSYCHOLOGICAL_BENEFITS = [
 ]
 
 
-# ==================== CALCULATION FUNCTIONS ====================
+# ==================== NEW CALCULATION FUNCTIONS ====================
+
+def calculate_with_engine(hourly_rate: float, assumptions_dict: Dict[str, Any] = None) -> Dict[str, Any]:
+    """
+    Calculate using model_engine.py with current or provided assumptions
+    """
+    if assumptions_dict is None:
+        assumptions_dict = current_assumptions
+    
+    # Create Assumptions object
+    a = Assumptions(
+        hours_per_week=assumptions_dict.get('hours_per_week', 48),
+        tips_per_week=assumptions_dict.get('tips_per_week', 18.0),
+        rental_per_week_total=assumptions_dict.get('rental_per_week_total', 386.86),
+        charging_per_week=assumptions_dict.get('charging_per_week', 15.47),
+        buffer_per_week=assumptions_dict.get('buffer_per_week', 50.0),
+        tax_reserve_rate_on_uber_gross=assumptions_dict.get('tax_reserve_rate_on_uber_gross', 0.4),
+        dad_upfront_week1_only=assumptions_dict.get('dad_upfront_week1_only', 386.86),
+        yoga_income_per_4wk_block=assumptions_dict.get('yoga_income_per_4wk_block', 480.0)
+    )
+    
+    # Compute all outputs
+    weekly = compute_weekly_engine(26, hourly_rate, a)
+    monthly = rollup_4wk(weekly, a)
+    quarterly_13wk = rollup_13wk(weekly, a)
+    quarterly_3p = rollup_3period(weekly, a)
+    roi_data = roi(weekly, a)
+    
+    return {
+        "weekly": weekly,
+        "monthly": monthly,
+        "quarterly_13wk": quarterly_13wk,
+        "quarterly_3p": quarterly_3p,
+        "roi": roi_data,
+        "assumptions": assumptions_dict
+    }
+
+
+# ==================== CALCULATION FUNCTIONS (LEGACY - keep for compatibility) ====================
 
 def calculate_scenario(inputs: ScenarioInputs, scenario_type: str = "avis_rental") -> Dict:
     """Calculate financial projections for a scenario"""
