@@ -193,6 +193,12 @@ const Dashboard = () => {
               />
             </TabsContent>
 
+            <TabsContent value="assumptions" className="tab-content">
+              <AssumptionsPanel 
+                onAssumptionsChange={handleAssumptionsChange}
+              />
+            </TabsContent>
+
             <TabsContent value="financial" className="tab-content">
               <FinancialComparison 
                 calculations={calculations}
