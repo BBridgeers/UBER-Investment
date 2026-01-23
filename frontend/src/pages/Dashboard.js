@@ -21,6 +21,8 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
   const [generatingPDF, setGeneratingPDF] = useState(false);
+  const [mode, setMode] = useState('baseline'); // 'baseline' or 'custom'
+  const [assumptions, setAssumptions] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -30,18 +32,35 @@ const Dashboard = () => {
     try {
       setLoading(true);
       
-      // Fetch default data
+      // Fetch default data (legacy)
       const defaultResponse = await axios.get(`${API}/default-data`);
       setDefaultData(defaultResponse.data);
       
-      // Fetch initial calculations
-      const calcResponse = await axios.get(`${API}/calculate-all?hours_per_week=48&hourly_rate=23&months=6`);
+      // Fetch assumptions
+      const assumptionsResponse = await axios.get(`${API}/assumptions`);
+      setAssumptions(assumptionsResponse.data.current);
+      setMode(assumptionsResponse.data.mode);
+      
+      // Fetch calculations (use new engine)
+      const calcResponse = await axios.get(`${API}/calculate-scenarios?use_baseline=true`);
       setCalculations(calcResponse.data);
       
       setLoading(false);
     } catch (error) {
       console.error('Error fetching data:', error);
       setLoading(false);
+    }
+  };
+
+  const handleAssumptionsChange = async (newAssumptions) => {
+    // Recalculate with new assumptions
+    try {
+      const calcResponse = await axios.get(`${API}/calculate-scenarios?use_baseline=false`);
+      setCalculations(calcResponse.data);
+      setAssumptions(newAssumptions);
+      setMode('custom');
+    } catch (error) {
+      console.error('Error recalculating:', error);
     }
   };
 
