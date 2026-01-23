@@ -179,8 +179,8 @@ def calculate_with_engine(hourly_rate: float, assumptions_dict: Dict[str, Any] =
         rental_per_week_total=assumptions_dict.get('rental_per_week_total', 386.86),
         charging_per_week=assumptions_dict.get('charging_per_week', 15.47),
         buffer_per_week=assumptions_dict.get('buffer_per_week', 50.0),
-        tax_reserve_rate_on_uber_gross=assumptions_dict.get('tax_reserve_rate_on_uber_gross', 0.4),
-        dad_upfront_week1_only=assumptions_dict.get('dad_upfront_week1_only', 386.86),
+        tax_reserve_rate_on_uber_gross=assumptions_dict.get('tax_reserve_rate_on_uber_gross', 0.25),  # 25% tax reserve
+        dad_upfront_week1_only=assumptions_dict.get('dad_upfront_week1_only', 686.86),  # Updated to $686.86
         yoga_income_per_4wk_block=assumptions_dict.get('yoga_income_per_4wk_block', 480.0)
     )
     
