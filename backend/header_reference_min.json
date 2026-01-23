@@ -1,0 +1,30 @@
+[
+  {
+    "Column": "Uber_gross_usd",
+    "Definition": "hours_per_week * hourly_rate"
+  },
+  {
+    "Column": "Total_gross_usd",
+    "Definition": "Uber_gross_usd + tips_per_week"
+  },
+  {
+    "Column": "Total_weekly_costs_usd",
+    "Definition": "rental_per_week_total + charging_per_week + buffer_per_week"
+  },
+  {
+    "Column": "Tax_reserve_usd",
+    "Definition": "Uber_gross_usd * tax_reserve_rate_on_uber_gross"
+  },
+  {
+    "Column": "Pay_dad_usd_week1_only",
+    "Definition": "dad_upfront_week1_only in Week 1 else 0"
+  },
+  {
+    "Column": "Net_after_dad_usd",
+    "Definition": "Total_gross_usd - Total_weekly_costs_usd - Tax_reserve_usd - Pay_dad_usd_week1_only"
+  },
+  {
+    "Column": "Cumulative_net_after_dad_usd",
+    "Definition": "cumsum(Net_after_dad_usd)"
+  }
+]

@@ -1,0 +1,137 @@
+[
+  {
+    "Week": 1,
+    "Scenario_hourly_rate_usd_per_hr": 20,
+    "Net_after_dad_usd": -245.19,
+    "Cumulative_net_after_dad_usd": -245.19,
+    "Uber_gross_usd": 960,
+    "Total_weekly_costs_usd": 452.33,
+    "Tax_reserve_usd": 384.0
+  },
+  {
+    "Week": 5,
+    "Scenario_hourly_rate_usd_per_hr": 20,
+    "Net_after_dad_usd": 141.67,
+    "Cumulative_net_after_dad_usd": 321.49,
+    "Uber_gross_usd": 960,
+    "Total_weekly_costs_usd": 452.33,
+    "Tax_reserve_usd": 384.0
+  },
+  {
+    "Week": 13,
+    "Scenario_hourly_rate_usd_per_hr": 20,
+    "Net_after_dad_usd": 141.67,
+    "Cumulative_net_after_dad_usd": 1454.85,
+    "Uber_gross_usd": 960,
+    "Total_weekly_costs_usd": 452.33,
+    "Tax_reserve_usd": 384.0
+  },
+  {
+    "Week": 20,
+    "Scenario_hourly_rate_usd_per_hr": 20,
+    "Net_after_dad_usd": 141.67,
+    "Cumulative_net_after_dad_usd": 2446.54,
+    "Uber_gross_usd": 960,
+    "Total_weekly_costs_usd": 452.33,
+    "Tax_reserve_usd": 384.0
+  },
+  {
+    "Week": 26,
+    "Scenario_hourly_rate_usd_per_hr": 20,
+    "Net_after_dad_usd": 141.67,
+    "Cumulative_net_after_dad_usd": 3296.56,
+    "Uber_gross_usd": 960,
+    "Total_weekly_costs_usd": 452.33,
+    "Tax_reserve_usd": 384.0
+  },
+  {
+    "Week": 1,
+    "Scenario_hourly_rate_usd_per_hr": 23,
+    "Net_after_dad_usd": -158.79,
+    "Cumulative_net_after_dad_usd": -158.79,
+    "Uber_gross_usd": 1104,
+    "Total_weekly_costs_usd": 452.33,
+    "Tax_reserve_usd": 441.6
+  },
+  {
+    "Week": 5,
+    "Scenario_hourly_rate_usd_per_hr": 23,
+    "Net_after_dad_usd": 228.07,
+    "Cumulative_net_after_dad_usd": 753.49,
+    "Uber_gross_usd": 1104,
+    "Total_weekly_costs_usd": 452.33,
+    "Tax_reserve_usd": 441.6
+  },
+  {
+    "Week": 13,
+    "Scenario_hourly_rate_usd_per_hr": 23,
+    "Net_after_dad_usd": 228.07,
+    "Cumulative_net_after_dad_usd": 2578.05,
+    "Uber_gross_usd": 1104,
+    "Total_weekly_costs_usd": 452.33,
+    "Tax_reserve_usd": 441.6
+  },
+  {
+    "Week": 20,
+    "Scenario_hourly_rate_usd_per_hr": 23,
+    "Net_after_dad_usd": 228.07,
+    "Cumulative_net_after_dad_usd": 4174.54,
+    "Uber_gross_usd": 1104,
+    "Total_weekly_costs_usd": 452.33,
+    "Tax_reserve_usd": 441.6
+  },
+  {
+    "Week": 26,
+    "Scenario_hourly_rate_usd_per_hr": 23,
+    "Net_after_dad_usd": 228.07,
+    "Cumulative_net_after_dad_usd": 5542.96,
+    "Uber_gross_usd": 1104,
+    "Total_weekly_costs_usd": 452.33,
+    "Tax_reserve_usd": 441.6
+  },
+  {
+    "Week": 1,
+    "Scenario_hourly_rate_usd_per_hr": 26,
+    "Net_after_dad_usd": -72.39,
+    "Cumulative_net_after_dad_usd": -72.39,
+    "Uber_gross_usd": 1248,
+    "Total_weekly_costs_usd": 452.33,
+    "Tax_reserve_usd": 499.2
+  },
+  {
+    "Week": 5,
+    "Scenario_hourly_rate_usd_per_hr": 26,
+    "Net_after_dad_usd": 314.47,
+    "Cumulative_net_after_dad_usd": 1185.49,
+    "Uber_gross_usd": 1248,
+    "Total_weekly_costs_usd": 452.33,
+    "Tax_reserve_usd": 499.2
+  },
+  {
+    "Week": 13,
+    "Scenario_hourly_rate_usd_per_hr": 26,
+    "Net_after_dad_usd": 314.47,
+    "Cumulative_net_after_dad_usd": 3701.25,
+    "Uber_gross_usd": 1248,
+    "Total_weekly_costs_usd": 452.33,
+    "Tax_reserve_usd": 499.2
+  },
+  {
+    "Week": 20,
+    "Scenario_hourly_rate_usd_per_hr": 26,
+    "Net_after_dad_usd": 314.47,
+    "Cumulative_net_after_dad_usd": 5902.54,
+    "Uber_gross_usd": 1248,
+    "Total_weekly_costs_usd": 452.33,
+    "Tax_reserve_usd": 499.2
+  },
+  {
+    "Week": 26,
+    "Scenario_hourly_rate_usd_per_hr": 26,
+    "Net_after_dad_usd": 314.47,
+    "Cumulative_net_after_dad_usd": 7789.36,
+    "Uber_gross_usd": 1248,
+    "Total_weekly_costs_usd": 452.33,
+    "Tax_reserve_usd": 499.2
+  }
+]

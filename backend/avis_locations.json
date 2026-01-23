@@ -1,0 +1,23 @@
+[
+  {
+    "Location": "Duncanville West",
+    "Address": "138 W Camp Wisdom Rd, Duncanville, TX 75116",
+    "Phone": "972-780-1542",
+    "Distance_mi": 10.6,
+    "Notes": "Closest"
+  },
+  {
+    "Location": "Addison",
+    "Address": "15804 Addison Rd, Addison, TX 75001",
+    "Phone": "972-239-2611",
+    "Distance_mi": 11.3,
+    "Notes": "Better charging infrastructure nearby"
+  },
+  {
+    "Location": "Richardson",
+    "Address": "505 S Central Expy, Richardson, TX 75080",
+    "Phone": "972-231-9545",
+    "Distance_mi": 11.4,
+    "Notes": "Alternative backup"
+  }
+]

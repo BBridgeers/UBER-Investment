@@ -1,0 +1,5 @@
+{
+  "mix_label": "80/20",
+  "description": "Modeled as a single weekly cost input; operational mix tracked separately.",
+  "charging_per_week_baseline": 15.47
+}

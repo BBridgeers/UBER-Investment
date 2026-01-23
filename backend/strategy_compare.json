@@ -1,0 +1,26 @@
+[
+  {
+    "Strategy": "Uber rental only (Mach-E)",
+    "Dad_upfront_usd": 386.86,
+    "Dad_upfront_breakdown": "Week 1 rental total (one-time assist); modeled as returned Week 1.",
+    "User_recurring_costs_modeled": "Rental + charging + buffer + tax reserve",
+    "Income_sources_modeled": "Uber + tips; yoga added in rollups",
+    "Notes": "Baseline compute engine"
+  },
+  {
+    "Strategy": "Beater only (transport-only)",
+    "Dad_upfront_usd": 4000.0,
+    "Dad_upfront_breakdown": "Vehicle capital only (operating costs intentionally omitted).",
+    "User_recurring_costs_modeled": "Not modeled",
+    "Income_sources_modeled": "Not modeled",
+    "Notes": "Context only"
+  },
+  {
+    "Strategy": "Hybrid (beater + Uber rental)",
+    "Dad_upfront_usd": 4386.86,
+    "Dad_upfront_breakdown": "Beater capital + Week 1 rental assist.",
+    "User_recurring_costs_modeled": "Same as Uber rental only for Uber-driving weeks",
+    "Income_sources_modeled": "Same as Uber rental only",
+    "Notes": "Behaves like rental-only + extra capital"
+  }
+]
