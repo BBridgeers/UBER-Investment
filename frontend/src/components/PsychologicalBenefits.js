@@ -313,24 +313,24 @@ const PsychologicalBenefits = ({ benefits }) => {
             <h4>What You're Really Investing In:</h4>
             <ul className="perspective-list">
               <li>
-                <strong>Breaking a 2-year cycle:</strong> Your son has been trapped without vehicle 
-                independence since 2023. This investment breaks that cycle immediately.
+                <strong>Launching independence:</strong> Your son gains vehicle 
+                independence immediately, establishing foundation for self-sufficiency.
               </li>
               <li>
-                <strong>Proving capability:</strong> $666.86 gives him the chance to prove he can 
-                be self-sustaining. First week demonstrates it, six months confirms it.
+                <strong>Demonstrating capability:</strong> $686.86 provides the opportunity to prove 
+                financial responsibility. First week shows promise, six months confirms success.
               </li>
               <li>
-                <strong>Reducing family burden:</strong> Instead of asking for rides/money, he becomes 
-                financially independent and can eventually help support the family.
+                <strong>Strengthening family bonds:</strong> Becoming financially independent allows 
+                him to contribute to the family and eventually provide support.
               </li>
               <li>
-                <strong>Mental health impact:</strong> Research proves car ownership reduces depression. 
-                You're investing in your son's psychological wellbeing, not just transportation.
+                <strong>Wellbeing investment:</strong> Research proves vehicle ownership improves mental health. 
+                You're investing in your son's psychological growth, not just transportation.
               </li>
               <li>
-                <strong>Employment access:</strong> 84% of non-car owners turn down jobs. This investment 
-                opens doors that are currently locked.
+                <strong>Opportunity access:</strong> Vehicle ownership increases employment opportunities 
+                by 2.7x, opening doors to career advancement and growth.
               </li>
             </ul>
           </div>
