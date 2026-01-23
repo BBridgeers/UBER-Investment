@@ -205,6 +205,12 @@ const Dashboard = () => {
               />
             </TabsContent>
 
+            <TabsContent value="weekly" className="tab-content">
+              <WeeklyTable 
+                mode={mode}
+              />
+            </TabsContent>
+
             <TabsContent value="financial" className="tab-content">
               <FinancialComparison 
                 calculations={calculations}
