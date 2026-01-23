@@ -282,11 +282,15 @@ const InteractiveCalculator = ({ onCalculate }) => {
                 <div className="breakdown-value">${monthlyUber.toFixed(0)}</div>
               </div>
               <div className="breakdown-row">
+                <div className="breakdown-label">Monthly Tips</div>
+                <div className="breakdown-value">${monthlyTips.toFixed(0)}</div>
+              </div>
+              <div className="breakdown-row">
                 <div className="breakdown-label">Monthly Yoga Studio</div>
                 <div className="breakdown-value">$320</div>
               </div>
               <div className="breakdown-row highlight">
-                <div className="breakdown-label">Total Monthly Income</div>
+                <div className="breakdown-label">Total Monthly Gross Income</div>
                 <div className="breakdown-value positive">${monthlyTotal.toLocaleString()}</div>
               </div>
               <div className="breakdown-divider"></div>
@@ -300,7 +304,7 @@ const InteractiveCalculator = ({ onCalculate }) => {
               </div>
               <div className="breakdown-row">
                 <div className="breakdown-label">Electricity (Weekly)</div>
-                <div className="breakdown-value negative">-$15.54</div>
+                <div className="breakdown-value negative">-${calculations.weekly_costs > 0 ? (calculations.weekly_costs - 386.86 - 31.92).toFixed(2) : '15.54'}</div>
               </div>
               <div className="breakdown-row highlight">
                 <div className="breakdown-label">Total Monthly Costs</div>
@@ -308,9 +312,15 @@ const InteractiveCalculator = ({ onCalculate }) => {
                   -${calculations.monthly_costs.toFixed(0)}
                 </div>
               </div>
+              <div className="breakdown-row">
+                <div className="breakdown-label">Tax Reserve (25% of Uber)</div>
+                <div className="breakdown-value negative">
+                  -${calculations.monthly_tax_reserve ? calculations.monthly_tax_reserve.toFixed(0) : (monthlyUber * 0.25).toFixed(0)}
+                </div>
+              </div>
               <div className="breakdown-divider"></div>
               <div className="breakdown-row highlight-gold">
-                <div className="breakdown-label strong">Monthly Net Profit</div>
+                <div className="breakdown-label strong">Monthly Net (After Tax)</div>
                 <div className="breakdown-value strong positive">
                   ${monthlyNet.toLocaleString()}
                 </div>
