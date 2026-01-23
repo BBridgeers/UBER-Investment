@@ -347,7 +347,7 @@ const InteractiveCalculator = ({ onCalculate }) => {
               <div className="insight-item">
                 <span className="insight-icon">🎯</span>
                 <span className="insight-text">
-                  You'll recover the initial $667 investment in just <strong>{breakEven} weeks</strong>
+                  You'll recover the initial $686.86 investment in just <strong>{breakEven} weeks</strong>
                 </span>
               </div>
               <div className="insight-item">
