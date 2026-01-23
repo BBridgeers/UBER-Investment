@@ -254,8 +254,8 @@ const PsychologicalBenefits = ({ benefits }) => {
             <div className="timeline-content">
               <h5>Confidence Building</h5>
               <p>
-                First successful week of self-sustaining income. Proving capability to yourself 
-                and family. Anxiety about "can I really do this?" begins to fade.
+                First successful week of self-sustaining income. Demonstrating capability to yourself 
+                and family. Confidence in your abilities grows with each day.
               </p>
             </div>
           </div>
