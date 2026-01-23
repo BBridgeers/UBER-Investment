@@ -293,8 +293,8 @@ const PsychologicalBenefits = ({ benefits }) => {
             <div className="timeline-content">
               <h5>Complete Transformation</h5>
               <p>
-                From trapped and dependent to independent and thriving. Proven track record 
-                of financial responsibility. Ready for next life chapter with confidence.
+                From dependent to independent and thriving. Established track record 
+                of financial responsibility. Ready for next life chapter with proven capability and confidence.
               </p>
             </div>
           </div>
