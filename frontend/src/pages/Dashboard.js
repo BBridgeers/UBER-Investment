@@ -41,8 +41,8 @@ const Dashboard = () => {
       setAssumptions(assumptionsResponse.data.current);
       setMode(assumptionsResponse.data.mode);
       
-      // Fetch calculations (use new engine)
-      const calcResponse = await axios.get(`${API}/calculate-scenarios?use_baseline=true`);
+      // Fetch calculations (use legacy endpoint for now)
+      const calcResponse = await axios.get(`${API}/calculate-all?hours_per_week=48&hourly_rate=23&months=6`);
       setCalculations(calcResponse.data);
       
       setLoading(false);
@@ -53,9 +53,10 @@ const Dashboard = () => {
   };
 
   const handleAssumptionsChange = async (newAssumptions) => {
-    // Recalculate with new assumptions
+    // Recalculate with new assumptions (use legacy endpoint)
     try {
-      const calcResponse = await axios.get(`${API}/calculate-scenarios?use_baseline=false`);
+      const hourlyRate = newAssumptions.hourly_rate || 23;
+      const calcResponse = await axios.get(`${API}/calculate-all?hours_per_week=48&hourly_rate=${hourlyRate}&months=6`);
       setCalculations(calcResponse.data);
       setAssumptions(newAssumptions);
       setMode('custom');
