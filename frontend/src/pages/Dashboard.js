@@ -148,7 +148,7 @@ const Dashboard = () => {
               <div className="stat-value text-gradient-gold">
                 ${calculations?.avis_rental?.six_month_net?.toLocaleString() || '0'}
               </div>
-              <div className="stat-label">6-Month Net (Recommended)</div>
+              <div className="stat-label">6-Month Net (After Tax)</div>
             </div>
           </div>
         </div>
