@@ -84,31 +84,6 @@
   padding: 2rem 3rem;
 }
 
-/* Corner brackets for header */
-.dashboard-header::before,
-.dashboard-header::after {
-  content: '';
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  border: 2px solid var(--cyan-primary);
-  box-shadow: var(--glow-cyan);
-}
-
-.dashboard-header::before {
-  top: 0;
-  left: 0;
-  border-right: none;
-  border-bottom: none;
-}
-
-.dashboard-header::after {
-  top: 0;
-  right: 0;
-  border-left: none;
-  border-bottom: none;
-}
-
 .header-content {
   max-width: 1400px;
   margin: 0 auto;
