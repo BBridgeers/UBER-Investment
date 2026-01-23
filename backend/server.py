@@ -209,14 +209,21 @@ def calculate_scenario(inputs: ScenarioInputs, scenario_type: str = "avis_rental
     # Calculate weekly earnings
     weekly_hours = inputs.hours_per_week
     hourly_rate = inputs.hourly_rate
-    weekly_uber = weekly_hours * hourly_rate
-    monthly_uber = weekly_uber * 4.33  # Standard weeks per month
+    weekly_uber_gross = weekly_hours * hourly_rate
+    
+    # Add tips to weekly earnings (baseline: $18/week)
+    weekly_tips = 18.0
+    weekly_gross_income = weekly_uber_gross + weekly_tips
+    
+    # Monthly uber calculation
+    monthly_uber_gross = weekly_uber_gross * 4.33  # Standard weeks per month
+    monthly_tips = weekly_tips * 4.33
     
     # Yoga studio income
     yoga_monthly = 320.0
     
-    # Total monthly income
-    monthly_income = monthly_uber + yoga_monthly
+    # Total monthly GROSS income (before tax)
+    monthly_gross_income = monthly_uber_gross + monthly_tips + yoga_monthly
     
     if scenario_type == "avis_rental":
         # AVIS costs
@@ -227,7 +234,11 @@ def calculate_scenario(inputs: ScenarioInputs, scenario_type: str = "avis_rental
         weekly_costs = avis_weekly + sales_tax_weekly + electricity_weekly
         monthly_costs = weekly_costs * 4.33
         
-        # Initial investment: bike + u-lock + AVIS rental + deposit (sales tax paid week 1, not upfront)
+        # Tax reserve: 25% of Uber gross earnings (not tips or yoga)
+        monthly_tax_reserve = monthly_uber_gross * 0.25
+        
+        # Initial investment: bike + u-lock + AVIS rental + deposit
+        # Note: Deposit is returned at end of period, but paid upfront
         initial_investment = inputs.bike_cost + inputs.ulock_cost + avis_weekly + inputs.avis_deposit
         
     elif scenario_type == "beater_car":
@@ -240,6 +251,10 @@ def calculate_scenario(inputs: ScenarioInputs, scenario_type: str = "avis_rental
         
         monthly_costs = insurance + gas + maintenance + registration
         weekly_costs = monthly_costs / 4.33
+        
+        # Tax reserve: 25% of Uber gross earnings
+        monthly_tax_reserve = monthly_uber_gross * 0.25
+        
         initial_investment = purchase + monthly_costs
         
     else:  # hybrid
@@ -252,47 +267,61 @@ def calculate_scenario(inputs: ScenarioInputs, scenario_type: str = "avis_rental
         
         weekly_costs = avis_weekly + sales_tax_weekly + electricity_weekly + (beater_monthly / 4.33)
         monthly_costs = weekly_costs * 4.33
+        
+        # Tax reserve: 25% of Uber gross earnings
+        monthly_tax_reserve = monthly_uber_gross * 0.25
+        
         initial_investment = beater_purchase + inputs.bike_cost + inputs.ulock_cost + avis_weekly + sales_tax_weekly + inputs.avis_deposit
     
-    # Calculate net income
-    monthly_net = monthly_income - monthly_costs
+    # Calculate NET income (after costs AND tax reserve)
+    monthly_net = monthly_gross_income - monthly_costs - monthly_tax_reserve
     
-    # Calculate projections
+    # Calculate projections (26 weeks = 6 months)
     month_projections = []
     cumulative = 0
+    weeks = inputs.months * 4.33  # Convert months to weeks
     
     for month in range(1, inputs.months + 1):
-        if month == 1:
-            month_net = monthly_net - (initial_investment if scenario_type != "avis_rental" else 0)
-        else:
-            month_net = monthly_net
-        
+        month_net = monthly_net
         cumulative += month_net
+        
         month_projections.append({
             "month": month,
-            "income": monthly_income,
-            "costs": monthly_costs if month > 1 else monthly_costs + initial_investment,
+            "income": monthly_gross_income,
+            "costs": monthly_costs,
+            "tax_reserve": monthly_tax_reserve,
             "net": month_net,
-            "cumulative": cumulative
+            "cumulative": cumulative,
+            "net_after_dad_plus_yoga": month_net,  # For compatibility
+            "cumulative_net_after_dad_plus_yoga": cumulative  # For compatibility
         })
+    
+    # At end of 6 months, deposit is returned for AVIS scenario
+    if scenario_type == "avis_rental":
+        final_net_with_deposit = cumulative + inputs.avis_deposit
+    else:
+        final_net_with_deposit = cumulative
     
     # Current Uber expenses eliminated
     current_uber_monthly = 650.0  # Average of $500-800
     total_uber_eliminated = current_uber_monthly * inputs.months
     
     return {
-        "weekly_earnings": weekly_uber,
-        "monthly_earnings": monthly_income,
+        "weekly_earnings": weekly_gross_income,
+        "monthly_earnings": monthly_gross_income,
         "weekly_costs": weekly_costs,
         "monthly_costs": monthly_costs,
+        "monthly_tax_reserve": monthly_tax_reserve,
         "monthly_net": monthly_net,
         "initial_investment": initial_investment,
-        "six_month_net": cumulative,
+        "six_month_net": cumulative,  # Net before deposit return
+        "six_month_net_with_deposit": final_net_with_deposit,  # Net after deposit return
         "total_uber_eliminated": total_uber_eliminated,
-        "total_benefit": cumulative + total_uber_eliminated,
+        "total_benefit": final_net_with_deposit + total_uber_eliminated,
         "projections": month_projections,
         "break_even_weeks": round(initial_investment / (monthly_net / 4.33), 1) if monthly_net > 0 else 0
     }
+
 
 
 # ==================== API ROUTES ====================
