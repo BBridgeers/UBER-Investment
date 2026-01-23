@@ -6,26 +6,47 @@ const IncomeProjection = ({ calculations }) => {
   const [viewMode, setViewMode] = useState('monthly'); // 'monthly', 'weekly', 'cumulative'
   const [scenarioView, setScenarioView] = useState('conservative'); // 'conservative', 'moderate', 'optimistic'
 
-  if (!calculations) return null;
+  if (!calculations) {
+    return (
+      <div className="income-projection">
+        <div className="loading-message">Loading income projection data...</div>
+      </div>
+    );
+  }
 
   const { avis_rental } = calculations;
 
-  // Generate weekly breakdown for first 6 weeks
-  const weeklyData = Array.from({ length: 26 }, (_, i) => {
+  if (!avis_rental) {
+    return (
+      <div className="income-projection">
+        <div className="loading-message">Loading AVIS rental data...</div>
+      </div>
+    );
+  }
+
+  // Generate weekly breakdown for 26 weeks
+  const weeklyData = [];
+  let cumulativeNet = 0;
+  
+  for (let i = 0; i < 26; i++) {
     const week = i + 1;
-    const weeklyEarnings = avis_rental.weekly_earnings;
-    const weeklyCosts = avis_rental.weekly_costs;
+    const weeklyEarnings = avis_rental.weekly_earnings || 0;
+    const weeklyCosts = avis_rental.weekly_costs || 0;
+    const initialInvestment = avis_rental.initial_investment || 0;
     const weeklyNet = weeklyEarnings - weeklyCosts;
     
-    return {
+    // Week 1 includes initial investment
+    const netAfterInvestment = week === 1 ? weeklyNet - initialInvestment : weeklyNet;
+    cumulativeNet += netAfterInvestment;
+    
+    weeklyData.push({
       week: `W${week}`,
       earnings: weeklyEarnings,
-      costs: week === 1 ? weeklyCosts + avis_rental.initial_investment : weeklyCosts,
-      net: week === 1 ? weeklyNet - avis_rental.initial_investment : weeklyNet,
-      cumulative: week === 1 ? weeklyNet - avis_rental.initial_investment : 
-                  (i > 0 ? weeklyData[i-1]?.cumulative + weeklyNet : weeklyNet)
-    };
-  });
+      costs: week === 1 ? weeklyCosts + initialInvestment : weeklyCosts,
+      net: netAfterInvestment,
+      cumulative: cumulativeNet
+    });
+  }
 
   // Earnings scenarios (48 hrs/week)
   const earningsScenarios = [
