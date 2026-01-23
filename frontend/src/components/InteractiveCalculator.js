@@ -87,7 +87,9 @@ const InteractiveCalculator = ({ onCalculate }) => {
 
   const weeklyEarnings = inputs.hoursPerWeek * inputs.hourlyRate;
   const monthlyUber = weeklyEarnings * 4.33;
-  const monthlyTotal = monthlyUber + 320; // Yoga
+  const weeklyTips = 18.0; // Baseline tips per week
+  const monthlyTips = weeklyTips * 4.33;
+  const monthlyTotal = monthlyUber + monthlyTips + 320; // Uber + Tips + Yoga
   const monthlyNet = calculations.monthly_net;
   const sixMonthNet = calculations.six_month_net;
   const breakEven = calculations.break_even_weeks;
