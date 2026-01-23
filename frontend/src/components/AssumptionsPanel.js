@@ -40,7 +40,6 @@ const AssumptionsPanel = ({ onAssumptionsChange }) => {
   const handleSave = async () => {
     setSaving(true);
     try {
-      // Send all knobs (not just changed ones)
       const updates = {};
       Object.keys(assumptions).forEach(key => {
         if (typeof assumptions[key] === 'number') {
@@ -51,7 +50,6 @@ const AssumptionsPanel = ({ onAssumptionsChange }) => {
       await axios.post(`${API}/assumptions`, updates);
       setMode('custom');
       
-      // Notify parent component
       if (onAssumptionsChange) {
         onAssumptionsChange(assumptions);
       }
@@ -69,7 +67,6 @@ const AssumptionsPanel = ({ onAssumptionsChange }) => {
       setAssumptions(response.data.current);
       setMode('baseline');
       
-      // Notify parent component
       if (onAssumptionsChange) {
         onAssumptionsChange(response.data.current);
       }
@@ -88,7 +85,7 @@ const AssumptionsPanel = ({ onAssumptionsChange }) => {
   };
 
   if (loading || !schema) {
-    return <div className=\"assumptions-loading\">Loading assumptions...</div>;
+    return <div className="assumptions-loading">Loading assumptions...</div>;
   }
 
   return (
@@ -121,14 +118,13 @@ const AssumptionsPanel = ({ onAssumptionsChange }) => {
         </button>
       </div>
 
-      <div className=\"knobs-grid\">
+      <div className="knobs-grid">
         {schema.knobs.map((knob) => {
           const key = knob.key;
           const currentValue = assumptions[key];
           const baselineValue = baseline[key];
           const changed = isChanged(key);
 
-          // Skip hourly_rate_scenarios (array field)
           if (Array.isArray(currentValue)) return null;
 
           return (
@@ -136,23 +132,23 @@ const AssumptionsPanel = ({ onAssumptionsChange }) => {
               key={key}
               className={`knob-card ${changed ? 'changed' : ''}`}
             >
-              <div className=\"knob-header\">
-                <label className=\"knob-label\">{knob.label}</label>
+              <div className="knob-header">
+                <label className="knob-label">{knob.label}</label>
                 {changed && (
                   <button
-                    className=\"reset-field-btn\"
+                    className="reset-field-btn"
                     onClick={() => handleResetField(key)}
-                    title=\"Reset to baseline\"
+                    title="Reset to baseline"
                   >
                     ↺
                   </button>
                 )}
               </div>
 
-              <div className=\"knob-input-group\">
+              <div className="knob-input-group">
                 <input
-                  type=\"number\"
-                  className=\"knob-input\"
+                  type="number"
+                  className="knob-input"
                   value={currentValue || 0}
                   onChange={(e) => handleChange(key, e.target.value)}
                   min={knob.min}
@@ -160,8 +156,8 @@ const AssumptionsPanel = ({ onAssumptionsChange }) => {
                   step={knob.step}
                 />
                 <input
-                  type=\"range\"
-                  className=\"knob-slider\"
+                  type="range"
+                  className="knob-slider"
                   value={currentValue || 0}
                   onChange={(e) => handleChange(key, e.target.value)}
                   min={knob.min}
@@ -170,23 +166,23 @@ const AssumptionsPanel = ({ onAssumptionsChange }) => {
                 />
               </div>
 
-              <div className=\"knob-values\">
-                <div className=\"value-row\">
-                  <span className=\"value-label\">Current:</span>
+              <div className="knob-values">
+                <div className="value-row">
+                  <span className="value-label">Current:</span>
                   <span className={`value-number ${changed ? 'changed' : ''}`}>
                     {currentValue !== undefined ? currentValue.toLocaleString() : 'N/A'}
                   </span>
                 </div>
-                <div className=\"value-row\">
-                  <span className=\"value-label\">Baseline:</span>
-                  <span className=\"value-number baseline\">
+                <div className="value-row">
+                  <span className="value-label">Baseline:</span>
+                  <span className="value-number baseline">
                     {baselineValue !== undefined ? baselineValue.toLocaleString() : 'N/A'}
                   </span>
                 </div>
                 {changed && (
-                  <div className=\"value-row delta\">
-                    <span className=\"value-label\">Delta:</span>
-                    <span className=\"value-number\">
+                  <div className="value-row delta">
+                    <span className="value-label">Delta:</span>
+                    <span className="value-number">
                       {((currentValue - baselineValue) > 0 ? '+' : '')}
                       {(currentValue - baselineValue).toLocaleString()}
                     </span>
@@ -198,11 +194,11 @@ const AssumptionsPanel = ({ onAssumptionsChange }) => {
         })}
       </div>
 
-      <div className=\"assumptions-info\">
-        <div className=\"info-box\">
+      <div className="assumptions-info">
+        <div className="info-box">
           <h4>💡 How Knobs Work</h4>
           <ul>
-            <li>Adjust any assumption to run \"what if\" scenarios</li>
+            <li>Adjust any assumption to run "what if" scenarios</li>
             <li>Changed values are highlighted in gold</li>
             <li>All calculations update automatically</li>
             <li>Save scenarios for comparison</li>
