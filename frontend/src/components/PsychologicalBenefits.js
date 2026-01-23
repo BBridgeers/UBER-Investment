@@ -164,26 +164,26 @@ const PsychologicalBenefits = ({ benefits }) => {
                     <h5>Real-World Application:</h5>
                     {benefit.title === 'Employment Access' && (
                       <ul>
-                        <li>Currently limited to yoga studio ($320/month)</li>
-                        <li>Job applications require lying about vehicle ownership</li>
-                        <li>Missing opportunities for higher income positions</li>
-                        <li>Vehicle enables honest applications + flexibility</li>
+                        <li>Current foundation: Yoga studio position ($320/month)</li>
+                        <li>Vehicle enables honest, confident job applications</li>
+                        <li>Access to higher income opportunities opens up</li>
+                        <li>Professional flexibility and reliability established</li>
                       </ul>
                     )}
                     {benefit.title === 'Mental Health Impact' && (
                       <ul>
-                        <li>2 years without vehicle = prolonged stress state</li>
-                        <li>Constant dependence creates shame/burden feelings</li>
-                        <li>Vehicle ownership = autonomy restoration</li>
-                        <li>Effect independent of income level (proven)</li>
+                        <li>Vehicle ownership restores autonomy and control</li>
+                        <li>Independence creates positive psychological shift</li>
+                        <li>Confidence building through self-sufficiency</li>
+                        <li>Research-proven wellbeing improvement</li>
                       </ul>
                     )}
                     {benefit.title === 'Breaking Mental Prison' && (
                       <ul>
-                        <li>Every outing requires parental approval/coordination</li>
-                        <li>Spontaneity eliminated from daily life</li>
-                        <li>Felt sense of being "trapped" in current situation</li>
-                        <li>Vehicle = key to physical and psychological freedom</li>
+                        <li>Spontaneity and flexibility return to daily life</li>
+                        <li>Independent decision-making capability restored</li>
+                        <li>Freedom to pursue opportunities immediately</li>
+                        <li>Vehicle unlocks physical and psychological growth</li>
                       </ul>
                     )}
                   </div>
