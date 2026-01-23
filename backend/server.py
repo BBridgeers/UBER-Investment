@@ -237,9 +237,9 @@ def calculate_scenario(inputs: ScenarioInputs, scenario_type: str = "avis_rental
         # Tax reserve: 25% of Uber gross earnings (not tips or yoga)
         monthly_tax_reserve = monthly_uber_gross * 0.25
         
-        # Initial investment: bike + u-lock + AVIS rental + deposit
-        # Note: Deposit is returned at end of period, but paid upfront
-        initial_investment = inputs.bike_cost + inputs.ulock_cost + avis_weekly + inputs.avis_deposit
+        # Initial investment: AVIS rental + deposit ONLY
+        # (bike and U-lock are paid for separately from weekly earnings, not upfront)
+        initial_investment = avis_weekly + inputs.avis_deposit
         
     elif scenario_type == "beater_car":
         # Beater car costs
