@@ -62,7 +62,7 @@ class ScenarioInputs(BaseModel):
     months: int = 6
     bike_cost: float = 50.0
     ulock_cost: float = 20.0
-    avis_deposit: float = 200.0
+    avis_deposit: float = 300.0  # Updated to $300 per audit
 
 class ScenarioCalculation(BaseModel):
     model_config = ConfigDict(extra="ignore")
