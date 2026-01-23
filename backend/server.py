@@ -458,13 +458,13 @@ async def get_default_data():
         }
     }
 
-@api_router.get("/calculate-all")
+@api_router.get("/calculate-all-legacy")
 async def calculate_all_legacy(
     hours_per_week: float = 48,
     hourly_rate: float = 23,
     months: int = 6
 ):
-    """Legacy endpoint - maintains old structure for backward compatibility"""
+    """Legacy endpoint - maintains old structure using model_engine.py"""
     # Use new engine but return in old format
     result = calculate_with_engine(hourly_rate, current_assumptions)
     
