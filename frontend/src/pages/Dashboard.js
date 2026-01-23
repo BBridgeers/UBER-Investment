@@ -9,6 +9,7 @@ import PsychologicalBenefits from '../components/PsychologicalBenefits';
 import InteractiveCalculator from '../components/InteractiveCalculator';
 import ScenarioManager from '../components/ScenarioManager';
 import AssumptionsPanel from '../components/AssumptionsPanel';
+import WeeklyTable from '../components/WeeklyTable';
 import { generatePDF } from '../utils/pdfGenerator';
 import './Dashboard.css';
 
