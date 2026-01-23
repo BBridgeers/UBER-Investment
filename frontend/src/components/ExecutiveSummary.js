@@ -58,7 +58,7 @@ const ExecutiveSummary = ({ calculations, defaultData }) => {
               <div className="stat-number text-gradient-gold">
                 ${avis_rental.six_month_net.toLocaleString()}
               </div>
-              <div className="stat-label">6-Month Net Profit</div>
+              <div className="stat-label">6-Month Net (After Tax)</div>
               <div className="stat-detail">AVIS Rental Strategy</div>
             </div>
             <div className="hero-stat-card card-3d glow-copper">
