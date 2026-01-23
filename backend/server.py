@@ -94,7 +94,7 @@ DEFAULT_SCENARIOS = {
         "electricity_weekly": 15.54,
         "bike_cost": 50.0,
         "ulock_cost": 20.0,
-        "initial_investment": 656.86,
+        "initial_investment": 686.86,  # $386.86 rental + $300 deposit
         "yoga_monthly": 320.0
     },
     "beater_car": {
