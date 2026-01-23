@@ -301,6 +301,119 @@ def calculate_scenario(inputs: ScenarioInputs, scenario_type: str = "avis_rental
 async def root():
     return {"message": "Transportation Independence Investment API"}
 
+# ==================== NEW KNOBS/ASSUMPTIONS ENDPOINTS ====================
+
+@api_router.get("/assumptions")
+async def get_assumptions():
+    """Get current assumptions and schema"""
+    global current_assumptions, current_mode
+    return {
+        "current": current_assumptions,
+        "baseline": baseline_data.BASELINE_DEFAULTS,
+        "schema": baseline_data.ASSUMPTIONS_SCHEMA,
+        "mode": current_mode
+    }
+
+@api_router.post("/assumptions")
+async def update_assumptions(updates: AssumptionsUpdate):
+    """Update current assumptions (switches to custom mode)"""
+    global current_assumptions, current_mode
+    
+    # Update only provided fields
+    update_dict = updates.dict(exclude_unset=True)
+    current_assumptions.update(update_dict)
+    current_mode = "custom"
+    
+    return {
+        "current": current_assumptions,
+        "mode": current_mode,
+        "message": "Assumptions updated"
+    }
+
+@api_router.post("/assumptions/reset")
+async def reset_assumptions():
+    """Reset to baseline assumptions"""
+    global current_assumptions, current_mode
+    current_assumptions = baseline_data.BASELINE_DEFAULTS.copy()
+    current_mode = "baseline"
+    
+    return {
+        "current": current_assumptions,
+        "mode": current_mode,
+        "message": "Reset to baseline"
+    }
+
+@api_router.post("/assumptions/mode")
+async def set_mode(mode: str):
+    """Set mode to 'baseline' or 'custom'"""
+    global current_mode
+    if mode not in ["baseline", "custom"]:
+        raise HTTPException(status_code=400, detail="Mode must be 'baseline' or 'custom'")
+    current_mode = mode
+    return {"mode": current_mode}
+
+# ==================== BASELINE DATA ENDPOINTS ====================
+
+@api_router.get("/baseline/weekly")
+async def get_baseline_weekly():
+    """Get baseline weekly engine data"""
+    return baseline_data.get_weekly_baseline()
+
+@api_router.get("/baseline/monthly")
+async def get_baseline_monthly():
+    """Get baseline monthly rollup data"""
+    return baseline_data.get_monthly_baseline()
+
+@api_router.get("/baseline/quarterly-13wk")
+async def get_baseline_quarterly_13wk():
+    """Get baseline quarterly 13-week data"""
+    return baseline_data.get_quarterly_13wk_baseline()
+
+@api_router.get("/baseline/quarterly-3p")
+async def get_baseline_quarterly_3p():
+    """Get baseline quarterly 3-period data"""
+    return baseline_data.get_quarterly_3p_baseline()
+
+@api_router.get("/baseline/roi")
+async def get_baseline_roi():
+    """Get baseline ROI data"""
+    return baseline_data.get_dad_roi_baseline()
+
+@api_router.get("/baseline/milestones")
+async def get_baseline_milestones():
+    """Get baseline milestones data"""
+    return baseline_data.get_milestones_baseline()
+
+# ==================== CUSTOM CALCULATION ENDPOINTS ====================
+
+@api_router.get("/calculate-engine")
+async def calculate_engine(
+    hourly_rate: float = 23.0,
+    use_baseline: bool = False
+):
+    """Calculate using model_engine.py with current or baseline assumptions"""
+    assumptions_to_use = baseline_data.BASELINE_DEFAULTS if use_baseline else current_assumptions
+    result = calculate_with_engine(hourly_rate, assumptions_to_use)
+    return result
+
+@api_router.get("/calculate-scenarios")
+async def calculate_all_scenarios_engine(use_baseline: bool = False):
+    """Calculate all three hourly rate scenarios"""
+    assumptions_to_use = baseline_data.BASELINE_DEFAULTS if use_baseline else current_assumptions
+    hourly_rates = baseline_data.BASELINE_DEFAULTS['hourly_rate_scenarios']
+    
+    results = {}
+    for rate in hourly_rates:
+        results[f"scenario_{rate}"] = calculate_with_engine(rate, assumptions_to_use)
+    
+    return {
+        "scenarios": results,
+        "assumptions": assumptions_to_use,
+        "mode": "baseline" if use_baseline else current_mode
+    }
+
+# ==================== LEGACY ENDPOINTS (keep for backward compatibility) ====================
+
 @api_router.get("/default-data")
 async def get_default_data():
     """Get all default data for the dashboard"""
