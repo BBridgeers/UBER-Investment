@@ -3,7 +3,7 @@
   "hourly_rate_scenarios": [20, 23, 26],
   "tips_per_week": 18.0,
   "rental_per_week_total": 386.86,
-  "charging_per_week": 15.47,
+  "charging_per_week": 15.54,
   "buffer_per_week": 50.0,
   "tax_reserve_rate_on_uber_gross": 0.25,
   "dad_upfront_week1_only": 686.86,
