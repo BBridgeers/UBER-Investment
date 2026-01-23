@@ -155,6 +155,10 @@ const Dashboard = () => {
               <span className="tab-icon">📊</span>
               <span>Overview</span>
             </TabsTrigger>
+            <TabsTrigger value="assumptions" className="tab-trigger">
+              <span className="tab-icon">🎛️</span>
+              <span>Assumptions</span>
+            </TabsTrigger>
             <TabsTrigger value="financial" className="tab-trigger">
               <span className="tab-icon">💰</span>
               <span>Financial Analysis</span>
