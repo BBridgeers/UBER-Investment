@@ -101,10 +101,13 @@ class TestBaselineScenario:
         # Should have 7 blocks (6 complete + 1 partial)
         assert len(monthly) >= 6
         
-        # First month should include yoga
+        # First month should include yoga for the full 4-week block
         month1 = monthly[0]
         assert "yoga_income" in month1
-        assert month1["yoga_income"] == 120.0  # 480 / 4 weeks = 120/week * 4 weeks
+        # yoga_income_per_4wk_block is 480, distributed over 4 weeks
+        # Each 4-week block gets the full 480
+        assert month1["yoga_income"] == 480.0, \
+            f"4-week block should have $480 yoga income, got ${month1['yoga_income']}"
         
         # Check cumulative includes yoga
         assert "cumulative_net_after_dad_plus_yoga" in month1
