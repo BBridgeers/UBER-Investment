@@ -451,10 +451,10 @@ async def get_default_data():
         "charging_locations": CHARGING_LOCATIONS,
         "psychological_benefits": PSYCHOLOGICAL_BENEFITS,
         "initial_investment": {
-            "avis_rental": 656.86,
+            "avis_rental": 686.86,  # Updated: $386.86 rental + $300 deposit
             "bike": 50.0,
             "ulock": 20.0,
-            "avis_deposit": 200.0
+            "avis_deposit": 300.0  # Updated to $300 per audit
         }
     }
 
