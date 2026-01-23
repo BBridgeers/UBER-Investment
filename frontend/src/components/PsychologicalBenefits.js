@@ -267,8 +267,8 @@ const PsychologicalBenefits = ({ benefits }) => {
             <div className="timeline-content">
               <h5>Identity Shift</h5>
               <p>
-                No longer "person without car" identity. Professional driver status. 
-                Reduced burden identity as you're now helping family financially.
+                Professional driver status established. Contributing family member identity. 
+                Helping family financially while building your own future.
               </p>
             </div>
           </div>
