@@ -92,29 +92,29 @@ const AssumptionsPanel = ({ onAssumptionsChange }) => {
   }
 
   return (
-    <div className=\"assumptions-panel\">
-      <div className=\"assumptions-header\">
-        <h2 className=\"section-title\">
-          <span className=\"title-icon\">🎛️</span>
+    <div className="assumptions-panel">
+      <div className="assumptions-header">
+        <h2 className="section-title">
+          <span className="title-icon">🎛️</span>
           Assumptions & Knobs
         </h2>
-        <div className=\"mode-indicator\">
+        <div className="mode-indicator">
           <span className={`mode-badge ${mode}`}>
             {mode === 'baseline' ? '📊 Baseline Mode' : '✏️ Custom Mode'}
           </span>
         </div>
       </div>
 
-      <div className=\"assumptions-controls\">
+      <div className="assumptions-controls">
         <button
-          className=\"control-btn save-btn\"
+          className="control-btn save-btn"
           onClick={handleSave}
           disabled={saving || mode === 'baseline'}
         >
           {saving ? 'Saving...' : '💾 Save Changes'}
         </button>
         <button
-          className=\"control-btn reset-btn\"
+          className="control-btn reset-btn"
           onClick={handleReset}
         >
           🔄 Reset All to Baseline
