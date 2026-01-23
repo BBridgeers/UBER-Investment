@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "knobs": [
+    {
+      "key": "hours_per_week",
+      "type": "number",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Hours per week"
+    },
+    {
+      "key": "hourly_rate",
+      "type": "number",
+      "min": 0,
+      "max": 100,
+      "step": 0.5,
+      "label": "Hourly rate (scenario or custom)"
+    },
+    {
+      "key": "tips_per_week",
+      "type": "number",
+      "min": 0,
+      "max": 500,
+      "step": 1,
+      "label": "Tips per week"
+    },
+    {
+      "key": "rental_per_week_total",
+      "type": "number",
+      "min": 0,
+      "max": 1000,
+      "step": 0.01,
+      "label": "Rental cost per week (total)"
+    },
+    {
+      "key": "charging_per_week",
+      "type": "number",
+      "min": 0,
+      "max": 500,
+      "step": 0.01,
+      "label": "Charging cost per week"
+    },
+    {
+      "key": "buffer_per_week",
+      "type": "number",
+      "min": 0,
+      "max": 500,
+      "step": 1,
+      "label": "Weekly buffer"
+    },
+    {
+      "key": "tax_reserve_rate_on_uber_gross",
+      "type": "number",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "label": "Tax reserve rate (on Uber gross)"
+    },
+    {
+      "key": "dad_upfront_week1_only",
+      "type": "number",
+      "min": 0,
+      "max": 5000,
+      "step": 0.01,
+      "label": "Dad upfront (Week 1 only)"
+    },
+    {
+      "key": "yoga_income_per_4wk_block",
+      "type": "number",
+      "min": 0,
+      "max": 5000,
+      "step": 1,
+      "label": "Yoga income per 4-week block"
+    }
+  ]
+}
