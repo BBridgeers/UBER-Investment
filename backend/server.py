@@ -33,12 +33,27 @@ api_router = APIRouter(prefix="/api")
 
 # ==================== MODELS ====================
 
-# Investment Scenario Models
+# Global state for current assumptions (starts with baseline)
+current_assumptions = baseline_data.BASELINE_DEFAULTS.copy()
+current_mode = "baseline"  # "baseline" or "custom"
+
+# Assumptions Model
+class AssumptionsUpdate(BaseModel):
+    hours_per_week: Optional[float] = None
+    tips_per_week: Optional[float] = None
+    rental_per_week_total: Optional[float] = None
+    charging_per_week: Optional[float] = None
+    buffer_per_week: Optional[float] = None
+    tax_reserve_rate_on_uber_gross: Optional[float] = None
+    dad_upfront_week1_only: Optional[float] = None
+    yoga_income_per_4wk_block: Optional[float] = None
+
+# Scenario Models (keep for backward compatibility)
 class ChargingStrategy(BaseModel):
     free_percentage: float = 60.0
     tesla_supercharger_percentage: float = 20.0
     evgo_percentage: float = 20.0
-    weekly_cost: float = 15.54
+    weekly_cost: float = 15.47
 
 class ScenarioInputs(BaseModel):
     hours_per_week: float = 48.0
