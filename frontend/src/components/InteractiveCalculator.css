@@ -263,6 +263,13 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
+.stat-detail {
+  font-size: 0.8rem;
+  color: rgba(255, 215, 0, 0.6);
+  margin-top: 0.25rem;
+  font-style: italic;
+}
+
 /* Breakdown Card */
 .breakdown-card {
   background: rgba(26, 26, 26, 0.8);
