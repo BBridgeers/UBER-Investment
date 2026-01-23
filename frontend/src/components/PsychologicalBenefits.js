@@ -341,7 +341,7 @@ const PsychologicalBenefits = ({ benefits }) => {
               <div className="roi-item">
                 <div className="roi-icon">🎯</div>
                 <div className="roi-text">
-                  <strong>Week 1:</strong> See immediate results. He's working, earning, self-sustaining.
+                  <strong>Week 1:</strong> See immediate results. Working, earning, self-sustaining from day one.
                 </div>
               </div>
               <div className="roi-item">
