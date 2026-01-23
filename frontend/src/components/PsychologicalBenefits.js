@@ -347,7 +347,7 @@ const PsychologicalBenefits = ({ benefits }) => {
               <div className="roi-item">
                 <div className="roi-icon">💪</div>
                 <div className="roi-text">
-                  <strong>Month 1:</strong> Witness confidence transformation. No longer burden on parents.
+                  <strong>Month 1:</strong> Witness confidence transformation. Contributing family member established.
                 </div>
               </div>
               <div className="roi-item">
