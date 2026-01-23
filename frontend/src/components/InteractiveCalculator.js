@@ -235,6 +235,7 @@ const InteractiveCalculator = ({ onCalculate }) => {
                 $<CountUp end={weeklyEarnings} duration={1.5} separator="," />
               </div>
               <div className="stat-label">Weekly Uber Earnings</div>
+              <div className="stat-detail">{inputs.hoursPerWeek} hrs @ ${inputs.hourlyRate}/hr</div>
             </div>
 
             <div className="stat-card card-3d glow-copper">
@@ -243,6 +244,7 @@ const InteractiveCalculator = ({ onCalculate }) => {
                 $<CountUp end={monthlyTotal} duration={1.5} separator="," />
               </div>
               <div className="stat-label">Monthly Total Income</div>
+              <div className="stat-detail">Uber + Tips + Yoga</div>
             </div>
 
             <div className="stat-card card-3d glow-gold">
@@ -250,7 +252,8 @@ const InteractiveCalculator = ({ onCalculate }) => {
               <div className="stat-value text-gradient-gold">
                 $<CountUp end={monthlyNet} duration={1.5} separator="," />
               </div>
-              <div className="stat-label">Monthly Net Income</div>
+              <div className="stat-label">Monthly Net (After Tax)</div>
+              <div className="stat-detail">After costs & 25% tax</div>
             </div>
 
             <div className="stat-card card-3d glow-copper">
@@ -259,6 +262,7 @@ const InteractiveCalculator = ({ onCalculate }) => {
                 $<CountUp end={sixMonthNet} duration={2} separator="," />
               </div>
               <div className="stat-label">{inputs.months}-Month Net Total</div>
+              <div className="stat-detail">Cumulative savings</div>
             </div>
           </div>
 
