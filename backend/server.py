@@ -429,6 +429,79 @@ async def get_default_data():
         }
     }
 
+@api_router.get("/calculate-all")
+async def calculate_all_legacy(
+    hours_per_week: float = 48,
+    hourly_rate: float = 23,
+    months: int = 6
+):
+    """Legacy endpoint - maintains old structure for backward compatibility"""
+    # Use new engine but return in old format
+    result = calculate_with_engine(hourly_rate, current_assumptions)
+    
+    # Transform to old structure
+    weekly_data = result['weekly']
+    monthly_data = result['monthly']
+    roi_data = result['roi']
+    
+    # Calculate legacy fields
+    initial_investment = current_assumptions['dad_upfront_week1_only']
+    weekly_costs = (current_assumptions['rental_per_week_total'] + 
+                   current_assumptions['charging_per_week'] + 
+                   current_assumptions['buffer_per_week'])
+    monthly_costs = weekly_costs * 4.33
+    
+    # Get week 26 cumulative
+    week_26 = weekly_data[-1] if weekly_data else {}
+    six_month_net = week_26.get('cumulative_net_after_dad', 0)
+    
+    # Calculate monthly earnings
+    uber_gross = current_assumptions['hours_per_week'] * hourly_rate
+    tips = current_assumptions['tips_per_week']
+    weekly_earnings = uber_gross + tips
+    monthly_earnings = (weekly_earnings * 4.33) + (current_assumptions['yoga_income_per_4wk_block'] / 4 * 4.33)
+    
+    legacy_format = {
+        "avis_rental": {
+            "initial_investment": initial_investment,
+            "weekly_costs": weekly_costs,
+            "weekly_earnings": weekly_earnings,
+            "monthly_costs": monthly_costs,
+            "monthly_earnings": monthly_earnings,
+            "monthly_net": monthly_earnings - monthly_costs,
+            "six_month_net": six_month_net,
+            "break_even_weeks": roi_data.get('payback_week', 0),
+            "total_uber_eliminated": 650 * 6,  # Estimated
+            "total_benefit": six_month_net + (650 * 6),
+            "projections": monthly_data
+        },
+        "beater_car": {
+            "initial_investment": 4000,
+            "weekly_costs": 697 / 4.33,
+            "monthly_costs": 697,
+            "monthly_earnings": monthly_earnings,
+            "monthly_net": monthly_earnings - 697,
+            "six_month_net": (monthly_earnings - 697) * 6,
+            "projections": []
+        },
+        "hybrid": {
+            "initial_investment": 4656.86,
+            "weekly_costs": weekly_costs + (697 / 4.33),
+            "monthly_costs": monthly_costs + 697,
+            "monthly_earnings": monthly_earnings,
+            "monthly_net": monthly_earnings - (monthly_costs + 697),
+            "six_month_net": (monthly_earnings - (monthly_costs + 697)) * 6,
+            "projections": []
+        },
+        "comparison": {
+            "best_option": "avis_rental",
+            "avis_advantage_vs_beater": six_month_net - ((monthly_earnings - 697) * 6),
+            "avis_advantage_vs_hybrid": six_month_net - ((monthly_earnings - (monthly_costs + 697)) * 6)
+        }
+    }
+    
+    return legacy_format
+
 @api_router.post("/calculate")
 async def calculate(inputs: ScenarioInputs, scenario_type: str = "avis_rental"):
     """Calculate projections based on user inputs"""
