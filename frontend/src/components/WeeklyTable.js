@@ -21,10 +21,25 @@ const WeeklyTable = ({ mode = 'baseline', hourlyRate = 23 }) => {
       if (mode === 'baseline') {
         // Fetch baseline CSV data
         const response = await axios.get(`${API}/baseline/weekly`);
-        // Filter by selected scenario (hourly rate)
-        const filtered = response.data.filter(row => 
-          parseFloat(row.hourly_rate) === selectedScenario
-        );
+        // Filter by selected scenario (hourly rate) and normalize column names
+        const filtered = response.data
+          .filter(row => parseFloat(row.Scenario_hourly_rate_usd_per_hr || row.hourly_rate) === selectedScenario)
+          .map(row => ({
+            week: parseInt(row.Week || row.week),
+            hourly_rate: parseFloat(row.Scenario_hourly_rate_usd_per_hr || row.hourly_rate),
+            hours_per_week: parseFloat(row.Hours_per_week || row.hours_per_week),
+            uber_gross: parseFloat(row.Uber_gross_usd || row.uber_gross),
+            tips: parseFloat(row.Tips_usd || row.tips),
+            total_gross: parseFloat(row.Total_gross_usd || row.total_gross),
+            rental: parseFloat(row.Rental_usd || row.rental),
+            charging: parseFloat(row.Charging_usd || row.charging),
+            buffer: parseFloat(row.Buffer_usd || row.buffer),
+            total_weekly_costs: parseFloat(row.Total_weekly_costs_usd || row.total_weekly_costs),
+            tax_reserve: parseFloat(row.Tax_reserve_usd || row.tax_reserve),
+            pay_dad: parseFloat(row.Pay_dad_usd_week1_only || row.pay_dad || 0),
+            net_after_dad: parseFloat(row.Net_after_dad_usd || row.net_after_dad),
+            cumulative_net_after_dad: parseFloat(row.Cumulative_net_after_dad_usd || row.cumulative_net_after_dad)
+          }));
         setWeeklyData(filtered);
       } else {
         // Fetch custom calculation
