@@ -145,10 +145,8 @@
   color: var(--text-secondary);
   letter-spacing: 2px;
   font-family: var(--font-primary);
-  animation: fade-in 1s ease-out 0.3s backwards;
-}
   font-weight: 400;
-  letter-spacing: 1px;
+  animation: fade-in 1s ease-out 0.3s backwards;
 }
 
 .header-right {
