@@ -1,12 +1,17 @@
+/* ==================================================================
+   CYBERPUNK DASHBOARD - FUTURISTIC FINANCIAL ANALYSIS
+   Transportation Independence Investment Tool
+   ================================================================== */
+
 /* Dashboard Container */
 .dashboard-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #1a1a1a 100%);
+  background: var(--bg-primary);
   position: relative;
   overflow-x: hidden;
 }
 
-/* Animated background effect */
+/* Animated circuit board background */
 .dashboard-container::before {
   content: '';
   position: fixed;
@@ -14,20 +19,23 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(184, 115, 51, 0.05) 0%, transparent 50%);
+  background-image: 
+    repeating-linear-gradient(0deg, rgba(0, 217, 255, 0.03) 0px, transparent 1px, transparent 40px, rgba(0, 217, 255, 0.03) 41px),
+    repeating-linear-gradient(90deg, rgba(0, 217, 255, 0.03) 0px, transparent 1px, transparent 40px, rgba(0, 217, 255, 0.03) 41px),
+    radial-gradient(circle at 20% 30%, rgba(0, 217, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255, 107, 53, 0.1) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
+  animation: float 20s ease-in-out infinite;
 }
 
-/* Loading Screen */
+/* Loading Screen with Cyberpunk Spinner */
 .loading-screen {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  background: var(--bg-primary);
 }
 
 .loader {
@@ -38,10 +46,12 @@
   width: 100px;
   height: 100px;
   margin: 0 auto 20px;
-  border: 4px solid rgba(255, 215, 0, 0.1);
-  border-top: 4px solid #FFD700;
+  border: 4px solid rgba(0, 217, 255, 0.1);
+  border-top: 4px solid var(--cyan-primary);
+  border-right: 4px solid var(--orange-primary);
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+  box-shadow: var(--glow-cyan);
 }
 
 @keyframes spin {
@@ -50,22 +60,53 @@
 }
 
 .loader-text {
-  font-family: 'Orbitron', sans-serif;
+  font-family: var(--font-tech);
   font-size: 18px;
-  color: #FFD700;
+  color: var(--cyan-primary);
   font-weight: 600;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-shadow: var(--glow-cyan);
+  animation: glow-pulse 2s ease-in-out infinite;
 }
 
-/* Header */
+/* ===================================================================
+   HEADER - CYBERPUNK STYLE
+   =================================================================== */
+
 .dashboard-header {
   position: relative;
   z-index: 10;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
-  border-bottom: 2px solid;
-  border-image: linear-gradient(90deg, #FFD700 0%, #B87333 100%) 1;
-  backdrop-filter: blur(10px);
+  background: rgba(10, 14, 26, 0.95);
+  border-bottom: 2px solid var(--cyan-primary);
+  box-shadow: 0 4px 20px rgba(0, 217, 255, 0.3), 0 0 40px rgba(0, 217, 255, 0.1);
+  backdrop-filter: blur(15px);
   padding: 2rem 3rem;
+}
+
+/* Corner brackets for header */
+.dashboard-header::before,
+.dashboard-header::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--cyan-primary);
+  box-shadow: var(--glow-cyan);
+}
+
+.dashboard-header::before {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+.dashboard-header::after {
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
 }
 
 .header-content {
@@ -75,6 +116,8 @@
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .header-title {
@@ -84,20 +127,26 @@
 }
 
 .title-main {
-  font-family: 'Orbitron', sans-serif;
+  font-family: var(--font-tech);
   font-size: 2.5rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #B87333 100%);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--cyan-primary) 0%, var(--orange-primary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  letter-spacing: 2px;
-  text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  filter: drop-shadow(0 0 20px var(--cyan-glow));
+  animation: slide-up 0.8s ease-out;
 }
 
 .title-sub {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--text-secondary);
+  letter-spacing: 2px;
+  font-family: var(--font-primary);
+  animation: fade-in 1s ease-out 0.3s backwards;
+}
   font-weight: 400;
   letter-spacing: 1px;
 }
