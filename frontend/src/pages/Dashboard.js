@@ -117,6 +117,11 @@ const Dashboard = () => {
             </h1>
           </div>
           <div className="header-right">
+            <div className="mode-toggle-header">
+              <span className={`mode-badge ${mode}`}>
+                {mode === 'baseline' ? '📊 Baseline' : '✏️ Custom'}
+              </span>
+            </div>
             <button 
               className="pdf-export-btn"
               onClick={handleGeneratePDF}
