@@ -241,8 +241,8 @@ const PsychologicalBenefits = ({ benefits }) => {
             <div className="timeline-content">
               <h5>Immediate Liberation</h5>
               <p>
-                Physical freedom achieved. No longer dependent on others for basic mobility. 
-                First experience of autonomous decision-making in 2 years.
+                Physical freedom achieved. Independent mobility restored. 
+                First experience of autonomous decision-making creates immediate confidence boost.
               </p>
             </div>
           </div>
