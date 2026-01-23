@@ -65,7 +65,7 @@ const InteractiveCalculator = ({ onCalculate }) => {
             free_percentage: inputs.freeChargingPercent,
             tesla_supercharger_percentage: (100 - inputs.freeChargingPercent) / 2,
             evgo_percentage: (100 - inputs.freeChargingPercent) / 2,
-            weekly_cost: 15.54
+            weekly_cost: 15.47
           }
         }
       });
@@ -310,7 +310,7 @@ const InteractiveCalculator = ({ onCalculate }) => {
               </div>
               <div className="breakdown-row">
                 <div className="breakdown-label">Electricity (Weekly)</div>
-                <div className="breakdown-value negative">-${calculations.weekly_costs > 0 ? (calculations.weekly_costs - 386.86 - 31.92).toFixed(2) : '15.54'}</div>
+                <div className="breakdown-value negative">-${calculations.weekly_costs > 0 ? (calculations.weekly_costs - 386.86 - 31.92).toFixed(2) : '15.47'}</div>
               </div>
               <div className="breakdown-row highlight">
                 <div className="breakdown-label">Total Monthly Costs</div>

@@ -8,11 +8,11 @@ const ChargingStrategy = ({ chargingLocations }) => {
   // Charging strategy breakdown
   const chargingMix = [
     { name: 'Free Charging (Guerrilla)', value: 60, cost: 0, color: '#4ade80' },
-    { name: 'Tesla Supercharger', value: 20, cost: 15.54 * 0.2, color: '#FFD700' },
-    { name: 'EVgo (45% discount)', value: 20, cost: 15.54 * 0.2, color: '#B87333' }
+    { name: 'Tesla Supercharger', value: 20, cost: 15.47 * 0.2, color: '#FFD700' },
+    { name: 'EVgo (45% discount)', value: 20, cost: 15.47 * 0.2, color: '#B87333' }
   ];
 
-  const totalWeeklyCost = 15.54;
+  const totalWeeklyCost = 15.47;
   const monthlyCost = totalWeeklyCost * 4.33;
 
   return (
