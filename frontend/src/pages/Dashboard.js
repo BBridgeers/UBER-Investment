@@ -172,19 +172,19 @@ const Dashboard = () => {
             </TabsTrigger>
             <TabsTrigger value="financial" className="tab-trigger">
               <span className="tab-icon">💰</span>
-              <span>Financial Analysis</span>
+              <span>Financial</span>
             </TabsTrigger>
             <TabsTrigger value="charging" className="tab-trigger">
               <span className="tab-icon">⚡</span>
-              <span>Charging Strategy</span>
+              <span>Charging</span>
             </TabsTrigger>
             <TabsTrigger value="projections" className="tab-trigger">
               <span className="tab-icon">📈</span>
-              <span>Income Projections</span>
+              <span>Projections</span>
             </TabsTrigger>
             <TabsTrigger value="psychology" className="tab-trigger">
               <span className="tab-icon">🧠</span>
-              <span>Psychological Impact</span>
+              <span>Psychology</span>
             </TabsTrigger>
             <TabsTrigger value="calculator" className="tab-trigger">
               <span className="tab-icon">🔢</span>
@@ -192,7 +192,7 @@ const Dashboard = () => {
             </TabsTrigger>
             <TabsTrigger value="scenarios" className="tab-trigger">
               <span className="tab-icon">💾</span>
-              <span>Saved Scenarios</span>
+              <span>Scenarios</span>
             </TabsTrigger>
           </TabsList>
 

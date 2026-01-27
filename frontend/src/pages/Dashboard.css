@@ -246,11 +246,11 @@
 
 .tabs-list {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 0.75rem;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 0.5rem;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(20, 25, 35, 0.9) 100%);
-  padding: 1rem;
-  border-radius: 20px;
+  padding: 0.75rem;
+  border-radius: 16px;
   border: 2px solid rgba(255, 215, 0, 0.2);
   backdrop-filter: blur(15px);
   box-shadow:
@@ -259,37 +259,38 @@
   perspective: 1000px;
 }
 
-/* 3D Raised Button Tab Trigger */
+/* 3D Raised Button Tab Trigger - Compact for single row */
 .tab-trigger {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
-  padding: 0.875rem 0.5rem;
-  min-height: 70px;
+  gap: 0.25rem;
+  padding: 0.5rem 0.25rem;
+  min-height: 58px;
 
   /* 3D Raised Effect */
   background: linear-gradient(145deg, rgba(40, 45, 55, 0.9) 0%, rgba(25, 30, 40, 0.95) 100%);
   border: 1px solid rgba(255, 215, 0, 0.15);
-  border-radius: 14px;
+  border-radius: 10px;
 
   /* 3D Box Shadow - Raised look */
   box-shadow:
-    0 6px 0 rgba(0, 0, 0, 0.4),
-    0 8px 15px rgba(0, 0, 0, 0.3),
-    inset 0 2px 0 rgba(255, 255, 255, 0.08),
-    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+    0 4px 0 rgba(0, 0, 0, 0.4),
+    0 6px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
 
   color: rgba(255, 255, 255, 0.7);
-  font-size: 0.8rem;
+  font-size: 0.65rem;
   font-weight: 600;
   text-align: center;
   cursor: pointer;
+  line-height: 1.2;
 
   /* Smooth transitions */
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   transform-style: preserve-3d;
 }
 
