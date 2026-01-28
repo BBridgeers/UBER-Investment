@@ -9,19 +9,19 @@ export const generatePDF = async (calculations, defaultData) => {
   // Title Page
   doc.setFillColor(0, 0, 0);
   doc.rect(0, 0, pageWidth, 297, 'F');
-  
+
   doc.setTextColor(255, 215, 0);
   doc.setFontSize(32);
   doc.setFont('helvetica', 'bold');
   doc.text('Transportation Independence', pageWidth / 2, 80, { align: 'center' });
-  
+
   doc.setFontSize(24);
   doc.text('Investment Analysis', pageWidth / 2, 100, { align: 'center' });
-  
+
   doc.setFontSize(14);
   doc.setTextColor(255, 255, 255);
   doc.text('Data-Driven Decision Tool for Financial Freedom', pageWidth / 2, 120, { align: 'center' });
-  
+
   doc.setFontSize(12);
   doc.setTextColor(200, 200, 200);
   doc.text(`Generated: ${new Date().toLocaleDateString()}`, pageWidth / 2, 260, { align: 'center' });
@@ -30,15 +30,15 @@ export const generatePDF = async (calculations, defaultData) => {
   doc.addPage();
   doc.setFillColor(255, 255, 255);
   doc.setTextColor(0, 0, 0);
-  
+
   doc.setFontSize(20);
   doc.setFont('helvetica', 'bold');
   doc.text('Executive Summary', margin, 30);
-  
+
   doc.setFontSize(12);
   doc.setFont('helvetica', 'normal');
   doc.text('Recommended Strategy: AVIS Mach-E Rental (48 hrs/week)', margin, 45);
-  
+
   // Key Metrics Table
   doc.autoTable({
     startY: 55,
@@ -62,12 +62,12 @@ export const generatePDF = async (calculations, defaultData) => {
   doc.setFontSize(20);
   doc.setFont('helvetica', 'bold');
   doc.text('Three Strategy Comparison', margin, 30);
-  
+
   doc.autoTable({
     startY: 40,
     head: [['Metric', 'AVIS Rental', 'Beater Car', 'Hybrid']],
     body: [
-      ['Initial Investment', 
+      ['Initial Investment',
         `$${calculations.avis_rental.initial_investment.toFixed(2)}`,
         `$${calculations.beater_car.initial_investment.toLocaleString()}`,
         `$${calculations.hybrid.initial_investment.toLocaleString()}`
@@ -116,13 +116,13 @@ export const generatePDF = async (calculations, defaultData) => {
   doc.setFontSize(20);
   doc.setFont('helvetica', 'bold');
   doc.text('EV Charging Strategy', margin, 30);
-  
+
   doc.setFontSize(12);
   doc.setFont('helvetica', 'normal');
   doc.text('Optimized Mix: 60% Free / 20% Tesla / 20% EVgo', margin, 45);
-  doc.text('Weekly Charging Cost: $15.54', margin, 53);
-  doc.text('Monthly Charging Cost: $67.28', margin, 61);
-  
+  doc.text('Weekly Charging Cost: $15.47', margin, 53);
+  doc.text('Monthly Charging Cost: $67.04', margin, 61);
+
   // Charging Locations
   doc.autoTable({
     startY: 75,
@@ -143,7 +143,7 @@ export const generatePDF = async (calculations, defaultData) => {
   doc.setFontSize(20);
   doc.setFont('helvetica', 'bold');
   doc.text('6-Month Income Projections', margin, 30);
-  
+
   doc.autoTable({
     startY: 40,
     head: [['Month', 'Income', 'Costs', 'Net', 'Cumulative']],
@@ -164,32 +164,32 @@ export const generatePDF = async (calculations, defaultData) => {
   doc.setFontSize(20);
   doc.setFont('helvetica', 'bold');
   doc.text('Psychological & Life Quality Impact', margin, 30);
-  
+
   doc.setFontSize(12);
   doc.setFont('helvetica', 'normal');
-  
+
   let yPos = 45;
   defaultData.psychological_benefits.forEach(benefit => {
     doc.setFont('helvetica', 'bold');
     doc.text(benefit.title, margin, yPos);
     yPos += 7;
-    
+
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10);
     doc.text(`Stat: ${benefit.stat}`, margin + 5, yPos);
     yPos += 6;
-    
+
     const descLines = doc.splitTextToSize(benefit.description, pageWidth - 2 * margin - 10);
     doc.text(descLines, margin + 5, yPos);
     yPos += descLines.length * 5 + 3;
-    
+
     doc.setFontSize(9);
     doc.setTextColor(100, 100, 100);
     doc.text(`Source: ${benefit.source}`, margin + 5, yPos);
     yPos += 10;
     doc.setTextColor(0, 0, 0);
     doc.setFontSize(12);
-    
+
     if (yPos > 260) {
       doc.addPage();
       yPos = 30;
@@ -201,11 +201,11 @@ export const generatePDF = async (calculations, defaultData) => {
   doc.setFontSize(20);
   doc.setFont('helvetica', 'bold');
   doc.text('Current Transportation Crisis', margin, 30);
-  
+
   doc.setFontSize(11);
   doc.setFont('helvetica', 'normal');
   yPos = 45;
-  
+
   const crisisPoints = [
     {
       title: 'Financial Drain',
@@ -216,8 +216,8 @@ export const generatePDF = async (calculations, defaultData) => {
       text: '84% of low-income non-car owners report turning down opportunities due to transportation. Job applications require misrepresenting vehicle ownership.'
     },
     {
-      title: 'Mental Prison',
-      text: 'Two years without vehicle independence creates felt sense of being trapped. Research confirms car ownership reduces depression independent of income.'
+      title: 'Timeline Acceleration',
+      text: 'Traditional vehicle purchase: 18-24 months saving for down payment. AVIS path: Move-out ready by Week 14. Research confirms car ownership improves mental health through restored autonomy.'
     }
   ];
 
@@ -225,7 +225,7 @@ export const generatePDF = async (calculations, defaultData) => {
     doc.setFont('helvetica', 'bold');
     doc.text(point.title, margin, yPos);
     yPos += 7;
-    
+
     doc.setFont('helvetica', 'normal');
     const textLines = doc.splitTextToSize(point.text, pageWidth - 2 * margin);
     doc.text(textLines, margin, yPos);
@@ -236,16 +236,16 @@ export const generatePDF = async (calculations, defaultData) => {
   doc.addPage();
   doc.setFillColor(255, 215, 0, 0.2);
   doc.rect(0, 0, pageWidth, 297, 'F');
-  
+
   doc.setTextColor(0, 0, 0);
   doc.setFontSize(24);
   doc.setFont('helvetica', 'bold');
   doc.text('Investment Recommendation', pageWidth / 2, 40, { align: 'center' });
-  
+
   doc.setFontSize(14);
   doc.setFont('helvetica', 'normal');
   yPos = 60;
-  
+
   const recommendations = [
     `✓ Initial Ask: $656.86 (AVIS rental + bike + U-lock + deposit)`,
     `✓ Strategy: AVIS Mach-E rental at 48 hours/week`,

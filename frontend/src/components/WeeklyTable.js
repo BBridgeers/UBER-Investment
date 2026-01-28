@@ -227,7 +227,7 @@ const WeeklyTable = ({ mode = 'baseline', hourlyRate = 23 }) => {
         <div className="info-card">
           <h4>💡 Reading the Table</h4>
           <ul>
-            <li><strong>Week 1</strong> includes Dad's upfront payment of $386.86</li>
+            <li><strong>Week 1</strong> includes Dad's upfront payment of $686.86 ($386.86 rental + $300 deposit)</li>
             <li><strong>Tax Reserve (25%)</strong> is calculated on Uber Gross only, not Tips</li>
             <li><strong>Cumulative</strong> shows running total after all expenses</li>
             <li><strong>Green values</strong> indicate profit, <strong>red</strong> indicates loss</li>

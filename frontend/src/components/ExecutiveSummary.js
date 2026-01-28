@@ -47,7 +47,7 @@ const ExecutiveSummary = ({ calculations, defaultData }) => {
           <p className="hero-subtitle">
             A data-driven analysis of three pathways to vehicle independence, income generation, and psychological wellbeing
           </p>
-          
+
           <div className="hero-stats">
             <div className="hero-stat-card card-3d glow-gold">
               <div className="stat-number">${avis_rental.initial_investment.toFixed(2)}</div>
@@ -75,18 +75,17 @@ const ExecutiveSummary = ({ calculations, defaultData }) => {
       {/* Quick Comparison */}
       <div className="comparison-grid">
         {scenarios.map(scenario => (
-          <div 
+          <div
             key={scenario.id}
-            className={`comparison-card card-3d ${
-              scenario.recommended ? 'recommended glow-gold' : ''
-            }`}
+            className={`comparison-card card-3d ${scenario.recommended ? 'recommended glow-gold' : ''
+              }`}
           >
             {scenario.recommended && (
               <div className="recommended-badge">
                 ⭐ RECOMMENDED
               </div>
             )}
-            
+
             <div className="card-header">
               <div className="card-icon">{scenario.icon}</div>
               <h3 className="card-title">{scenario.name}</h3>
@@ -99,28 +98,26 @@ const ExecutiveSummary = ({ calculations, defaultData }) => {
                   ${scenario.data.initial_investment.toLocaleString()}
                 </div>
               </div>
-              
+
               <div className="metric">
                 <div className="metric-label">Monthly Costs</div>
                 <div className="metric-value">
                   ${scenario.data.monthly_costs.toFixed(0)}
                 </div>
               </div>
-              
+
               <div className="metric">
                 <div className="metric-label">Monthly Net</div>
-                <div className={`metric-value ${
-                  scenario.data.monthly_net > 0 ? 'positive' : 'negative'
-                }`}>
+                <div className={`metric-value ${scenario.data.monthly_net > 0 ? 'positive' : 'negative'
+                  }`}>
                   ${scenario.data.monthly_net.toFixed(0)}
                 </div>
               </div>
-              
+
               <div className="metric highlight">
                 <div className="metric-label">6-Month Total</div>
-                <div className={`metric-value large ${
-                  scenario.data.six_month_net > 0 ? 'positive' : 'negative'
-                }`}>
+                <div className={`metric-value large ${scenario.data.six_month_net > 0 ? 'positive' : 'negative'
+                  }`}>
                   ${scenario.data.six_month_net.toLocaleString()}
                 </div>
               </div>
@@ -152,7 +149,7 @@ const ExecutiveSummary = ({ calculations, defaultData }) => {
           <span className="title-icon">💡</span>
           Key Financial Insights
         </h2>
-        
+
         <div className="insights-grid">
           <div className="insight-card card-3d">
             <div className="insight-number text-gradient-gold">
@@ -198,14 +195,14 @@ const ExecutiveSummary = ({ calculations, defaultData }) => {
           <span className="title-icon">🚨</span>
           Current Transportation Crisis
         </h2>
-        
+
         <div className="situation-grid">
           <div className="situation-card card-3d">
             <div className="situation-icon">💸</div>
             <h3 className="situation-title">Financial Drain</h3>
             <div className="situation-stat">$500-800/month</div>
             <p className="situation-text">
-              Monthly Uber expenses represent 156-250% of current yoga studio income ($320/month). 
+              Monthly Uber expenses represent 156-250% of current yoga studio income ($320/month).
               Average $33 per trip serves as sole means of mobility, limiting employment access and independence.
             </p>
           </div>
@@ -215,19 +212,19 @@ const ExecutiveSummary = ({ calculations, defaultData }) => {
             <h3 className="situation-title">Employment Barriers</h3>
             <div className="situation-stat">84% impact rate</div>
             <p className="situation-text">
-              Lack of vehicle creates self-reinforcing cycle. Job applications require misrepresenting 
+              Lack of vehicle creates self-reinforcing cycle. Job applications require misrepresenting
               vehicle ownership. 84% of low-income non-car owners report turning down opportunities due to transportation.
             </p>
           </div>
 
           <div className="situation-card card-3d">
-            <div className="situation-icon">🔒</div>
-            <h3 className="situation-title">Mental Prison</h3>
-            <div className="situation-stat">2 years trapped</div>
+            <div className="situation-icon">⚡</div>
+            <h3 className="situation-title">Timeline Acceleration</h3>
+            <div className="situation-stat">15-20 months faster</div>
             <p className="situation-text">
-              Two years without vehicle independence creates felt sense of being trapped, requiring parental 
-              approval for mobility, experiencing burden identity. Research confirms car ownership reduces depression 
-              independent of income.
+              Traditional vehicle purchase path: 18-24 months saving for down payment.
+              AVIS path: Move-out ready by Week 14 (3.5 months). Research confirms car ownership
+              improves mental health independent of income through restored autonomy.
             </p>
           </div>
         </div>
@@ -240,17 +237,17 @@ const ExecutiveSummary = ({ calculations, defaultData }) => {
             <div className="recommendation-icon">🎯</div>
             <h2 className="recommendation-title">Recommended Strategy</h2>
           </div>
-          
+
           <div className="recommendation-content">
             <h3 className="recommendation-option">AVIS Mach-E Rental (48 hrs/week)</h3>
-            
+
             <div className="recommendation-reasons">
               <div className="reason">
                 <div className="reason-icon">✔️</div>
                 <div className="reason-content">
                   <div className="reason-title">Financial Superiority</div>
                   <div className="reason-text">
-                    ${avis_rental.six_month_net.toLocaleString()} net profit in 6 months vs. 
+                    ${avis_rental.six_month_net.toLocaleString()} net profit in 6 months vs.
                     negative ${Math.abs(beater_car.six_month_net).toLocaleString()} loss with personal vehicle
                   </div>
                 </div>
@@ -261,7 +258,7 @@ const ExecutiveSummary = ({ calculations, defaultData }) => {
                 <div className="reason-content">
                   <div className="reason-title">Immediate Sustainability</div>
                   <div className="reason-text">
-                    Self-sustaining after Week 1. First ${avis_rental.weekly_earnings.toFixed(0)} in earnings 
+                    Self-sustaining after Week 1. First ${avis_rental.weekly_earnings.toFixed(0)} in earnings
                     covers ${avis_rental.weekly_costs.toFixed(0)} weekly costs with ${(avis_rental.weekly_earnings - avis_rental.weekly_costs).toFixed(0)} surplus
                   </div>
                 </div>
@@ -272,7 +269,7 @@ const ExecutiveSummary = ({ calculations, defaultData }) => {
                 <div className="reason-content">
                   <div className="reason-title">Zero Risk Approval</div>
                   <div className="reason-text">
-                    Uber Pro Card bypasses credit checks entirely. No approval barrier despite poor credit status. 
+                    Uber Pro Card bypasses credit checks entirely. No approval barrier despite poor credit status.
                     Guaranteed vehicle access.
                   </div>
                 </div>
@@ -283,7 +280,7 @@ const ExecutiveSummary = ({ calculations, defaultData }) => {
                 <div className="reason-content">
                   <div className="reason-title">Psychological Liberation</div>
                   <div className="reason-text">
-                    Breaks 2-year "mental prison" immediately. Eliminates parental dependence. 
+                    Breaks 2-year "mental prison" immediately. Eliminates parental dependence.
                     Enables honest job applications and expanded opportunity access.
                   </div>
                 </div>
