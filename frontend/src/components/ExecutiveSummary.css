@@ -410,4 +410,212 @@
   .situation-grid {
     grid-template-columns: 1fr;
   }
+
+  .hero-section {
+    padding: 2rem;
+  }
+
+  .recommendation-card {
+    padding: 2rem;
+  }
+
+  .recommendation-title {
+    font-size: 1.75rem;
+  }
+
+  .recommendation-option {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .executive-summary {
+    gap: 2rem;
+  }
+
+  .hero-section {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-badge {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.75rem;
+  }
+
+  .hero-stats {
+    gap: 1rem;
+  }
+
+  .hero-stat-card {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .stat-number {
+    font-size: 1.75rem;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+  }
+
+  .stat-detail {
+    font-size: 0.75rem;
+  }
+
+  .comparison-card {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+  }
+
+  .card-icon {
+    font-size: 2rem;
+  }
+
+  .metric-value {
+    font-size: 1rem;
+  }
+
+  .metric-value.large {
+    font-size: 1.25rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .title-icon {
+    font-size: 1.5rem;
+  }
+
+  .insight-card {
+    padding: 1.5rem;
+  }
+
+  .insight-number {
+    font-size: 1.75rem;
+  }
+
+  .insight-label {
+    font-size: 1rem;
+  }
+
+  .situation-card {
+    padding: 1.5rem;
+  }
+
+  .situation-icon {
+    font-size: 2.5rem;
+  }
+
+  .situation-title {
+    font-size: 1.25rem;
+  }
+
+  .situation-stat {
+    font-size: 1.25rem;
+  }
+
+  .situation-text {
+    font-size: 0.875rem;
+  }
+
+  .recommendation-card {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .recommendation-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .recommendation-icon {
+    font-size: 2.5rem;
+  }
+
+  .recommendation-title {
+    font-size: 1.5rem;
+  }
+
+  .recommendation-option {
+    font-size: 1.125rem;
+  }
+
+  .reason {
+    gap: 1rem;
+  }
+
+  .reason-icon {
+    font-size: 1.5rem;
+  }
+
+  .reason-title {
+    font-size: 1rem;
+  }
+
+  .reason-text {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .hero-section {
+    padding: 1rem;
+  }
+
+  .hero-title {
+    font-size: 1.25rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .hero-stat-card {
+    padding: 1rem;
+  }
+
+  .comparison-card {
+    padding: 1.25rem;
+  }
+
+  .card-title {
+    font-size: 1.125rem;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+  }
+
+  .recommendation-title {
+    font-size: 1.25rem;
+  }
+
+  .recommendation-option {
+    font-size: 1rem;
+  }
 }

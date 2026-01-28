@@ -1,4 +1,93 @@
-.scenario-manager { padding: 2rem; }
-.scenarios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-.scenario-card { background: rgba(26, 26, 26, 0.8); border: 2px solid rgba(255, 215, 0, 0.2); border-radius: 16px; padding: 2rem; }
-.empty-state { background: rgba(26, 26, 26, 0.8); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 3rem; text-align: center; color: rgba(255, 255, 255, 0.6); }
+/* Scenario Manager Styles */
+
+.scenario-manager {
+    padding: 2rem;
+}
+
+.scenarios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.scenario-card {
+    background: rgba(26, 26, 26, 0.8);
+    border: 2px solid rgba(255, 215, 0, 0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.scenario-card:hover {
+    border-color: rgba(255, 215, 0, 0.4);
+    transform: translateY(-4px);
+}
+
+.empty-state {
+    background: rgba(26, 26, 26, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 3rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .scenario-manager {
+        padding: 1.5rem;
+    }
+
+    .scenarios-grid {
+        gap: 1.5rem;
+    }
+
+    .scenario-card {
+        padding: 1.5rem;
+    }
+
+    .empty-state {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .scenario-manager {
+        padding: 1rem;
+    }
+
+    .scenarios-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .scenario-card {
+        padding: 1.25rem;
+        border-radius: 12px;
+    }
+
+    .scenario-card:hover {
+        transform: none;
+    }
+
+    .empty-state {
+        padding: 1.5rem;
+        border-radius: 12px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .scenario-manager {
+        padding: 0.75rem;
+    }
+
+    .scenario-card {
+        padding: 1rem;
+    }
+
+    .empty-state {
+        padding: 1.25rem;
+        font-size: 0.85rem;
+    }
+}

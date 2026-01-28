@@ -311,4 +311,155 @@
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .info-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .weekly-table-container {
+    gap: 1.5rem;
+  }
+
+  .weekly-table-header {
+    gap: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .weekly-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .scenario-selector {
+    width: 100%;
+  }
+
+  .scenario-selector label {
+    font-size: 0.875rem;
+  }
+
+  .scenario-select {
+    padding: 0.6rem 0.875rem;
+    font-size: 0.875rem;
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .export-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.875rem;
+    justify-content: center;
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .export-btn:hover {
+    transform: none;
+  }
+
+  .table-wrapper {
+    padding: 0;
+    border-radius: 12px;
+    /* Add scroll hint shadow */
+    background:
+      linear-gradient(to right, rgba(26, 26, 26, 0.95) 30%, transparent),
+      linear-gradient(to left, rgba(26, 26, 26, 0.95) 30%, transparent),
+      rgba(26, 26, 26, 0.8);
+    background-size: 40px 100%, 40px 100%, 100% 100%;
+    background-position: 0 0, 100% 0, 0 0;
+    background-attachment: local, local, scroll;
+    background-repeat: no-repeat;
+  }
+
+  .weekly-table {
+    font-size: 0.7rem;
+  }
+
+  .weekly-table th {
+    padding: 0.5rem 0.375rem;
+    font-size: 0.65rem;
+  }
+
+  .weekly-table td {
+    padding: 0.5rem 0.375rem;
+  }
+
+  .week-col {
+    font-size: 0.8rem;
+  }
+
+  .sticky-col {
+    left: 0;
+    min-width: 40px;
+  }
+
+  .total-row td {
+    padding: 0.75rem 0.375rem;
+    font-size: 0.8rem;
+  }
+
+  .info-card {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .info-card h4 {
+    font-size: 1.125rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .info-card li {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .section-title {
+    font-size: 1.25rem;
+  }
+
+  .weekly-table {
+    font-size: 0.65rem;
+  }
+
+  .weekly-table th {
+    font-size: 0.6rem;
+    padding: 0.4rem 0.25rem;
+  }
+
+  .weekly-table td {
+    padding: 0.4rem 0.25rem;
+  }
+
+  .week-col {
+    font-size: 0.7rem;
+  }
+
+  .info-card {
+    padding: 1rem;
+  }
+
+  .info-card h4 {
+    font-size: 1rem;
+  }
+
+  .info-card li {
+    font-size: 0.8rem;
+    padding-left: 1rem;
+  }
+
+  .scenario-select,
+  .export-btn {
+    font-size: 0.8rem;
+  }
 }

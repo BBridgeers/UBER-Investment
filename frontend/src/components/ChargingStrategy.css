@@ -38,8 +38,15 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .cost-value {
@@ -274,6 +281,7 @@
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -386,6 +394,7 @@
 }
 
 @media (max-width: 768px) {
+
   .cost-summary-grid,
   .locations-grid {
     grid-template-columns: 1fr;
@@ -393,5 +402,183 @@
 
   .cost-value {
     font-size: 2rem;
+  }
+
+  .strategy-viz-section,
+  .routine-section {
+    padding: 1.5rem;
+  }
+
+  .subsection-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .charging-strategy {
+    gap: 2rem;
+  }
+
+  .cost-card {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .cost-icon {
+    font-size: 2.5rem;
+  }
+
+  .cost-value {
+    font-size: 1.75rem;
+  }
+
+  .cost-label {
+    font-size: 1rem;
+  }
+
+  .cost-detail {
+    font-size: 0.8rem;
+  }
+
+  .strategy-viz-section {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+
+  .subsection-title {
+    font-size: 1.25rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .location-icon,
+  .routine-icon {
+    font-size: 1.25rem;
+  }
+
+  .legend-item {
+    padding: 0.75rem;
+  }
+
+  .legend-name {
+    font-size: 0.9rem;
+  }
+
+  .legend-stats {
+    font-size: 0.8rem;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .location-card {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .location-name {
+    font-size: 1.125rem;
+  }
+
+  .location-distance {
+    font-size: 1rem;
+  }
+
+  .location-type-badge {
+    font-size: 0.65rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .location-address {
+    font-size: 0.8rem;
+  }
+
+  .detail-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .detail-label {
+    font-size: 0.8rem;
+  }
+
+  .detail-value {
+    font-size: 0.9rem;
+  }
+
+  .routine-section {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+
+  .routine-day {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .routine-day:hover {
+    transform: none;
+  }
+
+  .day-badge {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+
+  .routine-title {
+    font-size: 1.125rem;
+  }
+
+  .routine-description {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .routine-cost {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .cost-card {
+    padding: 1.25rem;
+  }
+
+  .cost-value {
+    font-size: 1.5rem;
+  }
+
+  .cost-icon {
+    font-size: 2rem;
+  }
+
+  .strategy-viz-section,
+  .routine-section {
+    padding: 1rem;
+  }
+
+  .subsection-title {
+    font-size: 1.125rem;
+  }
+
+  .location-card {
+    padding: 1rem;
+  }
+
+  .location-name {
+    font-size: 1rem;
+  }
+
+  .routine-day {
+    padding: 0.875rem;
+  }
+
+  .day-badge {
+    font-size: 0.9rem;
+  }
+
+  .routine-title {
+    font-size: 1rem;
   }
 }

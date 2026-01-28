@@ -81,8 +81,17 @@
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.8; }
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
 }
 
 .summary-value {
@@ -333,5 +342,181 @@
 
   .milestones-grid {
     grid-template-columns: 1fr;
+  }
+
+  .timeline-section,
+  .all-scenarios-section {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .income-projection {
+    gap: 2rem;
+  }
+
+  .scenario-btn {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .scenario-btn:hover {
+    transform: none;
+  }
+
+  .scenario-btn-title {
+    font-size: 1rem;
+  }
+
+  .scenario-btn-rate {
+    font-size: 1.25rem;
+  }
+
+  .summary-card {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .summary-card:hover {
+    transform: none;
+  }
+
+  .summary-icon {
+    font-size: 2.5rem;
+    animation: none;
+  }
+
+  .summary-value {
+    font-size: 1.75rem;
+  }
+
+  .summary-label {
+    font-size: 0.9rem;
+  }
+
+  .summary-detail {
+    font-size: 0.8rem;
+  }
+
+  .view-mode-toggle {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.375rem;
+    padding: 0.375rem;
+  }
+
+  .mode-btn {
+    padding: 0.625rem 1rem;
+    font-size: 0.85rem;
+    min-height: 44px;
+  }
+
+  .timeline-section {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+
+  .milestone-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .milestone-card:hover {
+    transform: none;
+  }
+
+  .milestone-number {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.75rem;
+  }
+
+  .milestone-title {
+    font-size: 1.125rem;
+  }
+
+  .milestone-description {
+    font-size: 0.875rem;
+  }
+
+  .milestone-value {
+    font-size: 1.5rem;
+  }
+
+  .all-scenarios-section {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+
+  .comparison-table-row {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  .comparison-table-row:not(.table-header):hover {
+    transform: none;
+  }
+
+  .table-cell {
+    font-size: 0.85rem;
+  }
+
+  .table-cell.scenario-name {
+    font-size: 0.95rem;
+  }
+
+  .table-cell.total-value {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .scenario-btn {
+    padding: 0.875rem;
+  }
+
+  .scenario-btn-title {
+    font-size: 0.9rem;
+  }
+
+  .scenario-btn-rate {
+    font-size: 1.125rem;
+  }
+
+  .summary-card {
+    padding: 1.25rem;
+  }
+
+  .summary-value {
+    font-size: 1.5rem;
+  }
+
+  .summary-label {
+    font-size: 0.85rem;
+  }
+
+  .mode-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .timeline-section,
+  .all-scenarios-section {
+    padding: 1rem;
+  }
+
+  .milestone-card {
+    padding: 1.25rem;
+  }
+
+  .milestone-title {
+    font-size: 1rem;
+  }
+
+  .milestone-value {
+    font-size: 1.25rem;
+  }
+
+  .table-cell {
+    font-size: 0.8rem;
   }
 }

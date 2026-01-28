@@ -225,4 +225,105 @@
   .winner-title {
     font-size: 1.75rem;
   }
+
+  .winner-stats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .financial-comparison {
+    gap: 2rem;
+  }
+
+  .chart-section {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+
+  .chart-title {
+    font-size: 1.25rem;
+  }
+
+  .view-toggle {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .toggle-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    min-height: 44px;
+  }
+
+  .comparison-table-section {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+
+  .table-row {
+    padding: 0.75rem;
+  }
+
+  .table-cell {
+    font-size: 0.875rem;
+  }
+
+  .table-cell.bold {
+    font-size: 1rem;
+  }
+
+  .winner-section {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .winner-icon {
+    font-size: 3rem;
+  }
+
+  .winner-title {
+    font-size: 1.5rem;
+  }
+
+  .winner-stat {
+    padding: 1rem;
+  }
+
+  .winner-stat .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .winner-stat .stat-label {
+    font-size: 0.85rem;
+  }
+
+  .winner-description {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .chart-section,
+  .comparison-table-section {
+    padding: 1rem;
+  }
+
+  .chart-title {
+    font-size: 1.125rem;
+  }
+
+  .winner-title {
+    font-size: 1.25rem;
+  }
+
+  .winner-stat .stat-value {
+    font-size: 1.25rem;
+  }
+
+  .toggle-btn {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.7rem;
+  }
 }

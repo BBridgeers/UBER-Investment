@@ -321,4 +321,156 @@
   .control-btn {
     flex: 1;
   }
+
+  .info-box {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .assumptions-panel {
+    gap: 1.5rem;
+  }
+
+  .assumptions-header {
+    gap: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .mode-badge {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .assumptions-controls {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .control-btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9rem;
+    justify-content: center;
+    min-height: 48px;
+  }
+
+  .control-btn:hover {
+    transform: none;
+  }
+
+  .knobs-grid {
+    gap: 1.5rem;
+  }
+
+  .knob-card {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .knob-label {
+    font-size: 0.95rem;
+  }
+
+  .reset-field-btn {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+
+  .knob-input {
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    min-height: 48px;
+  }
+
+  /* Touch-friendly slider */
+  .knob-slider {
+    height: 12px;
+  }
+
+  .knob-slider::-webkit-slider-thumb {
+    width: 28px;
+    height: 28px;
+  }
+
+  .knob-slider::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+  }
+
+  .knob-values {
+    padding: 0.875rem;
+  }
+
+  .value-label {
+    font-size: 0.8rem;
+  }
+
+  .value-number {
+    font-size: 0.9rem;
+  }
+
+  .info-box {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .info-box h4 {
+    font-size: 1.125rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .info-box li {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .section-title {
+    font-size: 1.25rem;
+  }
+
+  .mode-badge {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .control-btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .knob-card {
+    padding: 1rem;
+  }
+
+  .knob-label {
+    font-size: 0.9rem;
+  }
+
+  .knob-input {
+    font-size: 0.95rem;
+  }
+
+  .info-box {
+    padding: 1rem;
+  }
+
+  .info-box h4 {
+    font-size: 1rem;
+  }
+
+  .info-box li {
+    font-size: 0.8rem;
+    padding-left: 1rem;
+  }
 }
