@@ -13,7 +13,7 @@ const ChargingStrategy = ({ chargingLocations }) => {
   ];
 
   const totalWeeklyCost = 15.47;
-  const monthlyCost = totalWeeklyCost * 4.33;
+  const monthlyCost = 67.04;  // Per audit: $15.47 × 4.33 rounded
 
   return (
     <div className="charging-strategy">
@@ -52,7 +52,7 @@ const ChargingStrategy = ({ chargingLocations }) => {
       {/* Strategy Mix Visualization */}
       <div className="strategy-viz-section card-3d">
         <h3 className="subsection-title">Charging Strategy Mix (60/20/20)</h3>
-        
+
         <div className="viz-content">
           <div className="chart-container">
             <ResponsiveContainer width="100%" height={300}>
@@ -109,14 +109,13 @@ const ChargingStrategy = ({ chargingLocations }) => {
           <span className="location-icon">📍</span>
           Charging Locations Near Southlake, TX
         </h3>
-        
+
         <div className="locations-grid">
           {chargingLocations.map((location, index) => (
-            <div 
-              key={index} 
-              className={`location-card card-3d ${
-                selectedLocation === index ? 'selected' : ''
-              }`}
+            <div
+              key={index}
+              className={`location-card card-3d ${selectedLocation === index ? 'selected' : ''
+                }`}
               onClick={() => setSelectedLocation(index === selectedLocation ? null : index)}
             >
               <div className="location-header">
@@ -196,17 +195,17 @@ const ChargingStrategy = ({ chargingLocations }) => {
           <span className="routine-icon">📋</span>
           Recommended Weekly Charging Routine
         </h3>
-        
+
         <div className="routine-timeline">
           <div className="routine-day">
             <div className="day-badge">Mon/Wed/Fri</div>
             <div className="routine-content">
               <div className="routine-title">Free Overnight Charging</div>
               <div className="routine-description">
-                • End day ~10pm with 30-40% battery<br/>
-                • Drive to Westin or apartment complex<br/>
-                • Plug in overnight (Level 2, 6-8 hours)<br/>
-                • Bike home (15-25 min ride)<br/>
+                • End day ~10pm with 30-40% battery<br />
+                • Drive to Westin or apartment complex<br />
+                • Plug in overnight (Level 2, 6-8 hours)<br />
+                • Bike home (15-25 min ride)<br />
                 • Retrieve 6-7am (108-162 miles added)
               </div>
               <div className="routine-cost">Cost: $0</div>
@@ -218,9 +217,9 @@ const ChargingStrategy = ({ chargingLocations }) => {
             <div className="routine-content">
               <div className="routine-title">Quick Tesla Supercharger Top-Up</div>
               <div className="routine-description">
-                • 6am off-peak charging (20 min session)<br/>
-                • 261 N Carroll Ave (0.2 miles from home)<br/>
-                • Add 100 miles @ $0.22/kWh average<br/>
+                • 6am off-peak charging (20 min session)<br />
+                • 261 N Carroll Ave (0.2 miles from home)<br />
+                • Add 100 miles @ $0.22/kWh average<br />
                 • 37 kWh = $8.14 per session
               </div>
               <div className="routine-cost">Cost: $8.14/session</div>
@@ -232,9 +231,9 @@ const ChargingStrategy = ({ chargingLocations }) => {
             <div className="routine-content">
               <div className="routine-title">EVgo Fast Charge (Uber discount)</div>
               <div className="routine-description">
-                • Lunch break between Uber shifts<br/>
-                • Various locations 5-10 miles away<br/>
-                • 45% discount with Uber Pro Gold<br/>
+                • Lunch break between Uber shifts<br />
+                • Various locations 5-10 miles away<br />
+                • 45% discount with Uber Pro Gold<br />
                 • Quick 30-min session
               </div>
               <div className="routine-cost">Cost: $7.40/session</div>

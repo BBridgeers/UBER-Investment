@@ -17,7 +17,7 @@ const WeeklyTable = ({ mode = 'baseline', hourlyRate = 23 }) => {
   const fetchWeeklyData = async () => {
     try {
       setLoading(true);
-      
+
       if (mode === 'baseline') {
         // Fetch baseline CSV data
         const response = await axios.get(`${API}/baseline/weekly`);
@@ -48,7 +48,7 @@ const WeeklyTable = ({ mode = 'baseline', hourlyRate = 23 }) => {
         });
         setWeeklyData(response.data.weekly || []);
       }
-      
+
       setLoading(false);
     } catch (error) {
       console.error('Error fetching weekly data:', error);
@@ -61,10 +61,10 @@ const WeeklyTable = ({ mode = 'baseline', hourlyRate = 23 }) => {
 
     // Create CSV header
     const headers = Object.keys(weeklyData[0]).join(',');
-    
+
     // Create CSV rows
-    const rows = weeklyData.map(row => 
-      Object.values(row).map(val => 
+    const rows = weeklyData.map(row =>
+      Object.values(row).map(val =>
         typeof val === 'number' ? val.toFixed(2) : val
       ).join(',')
     ).join('\n');
@@ -111,8 +111,8 @@ const WeeklyTable = ({ mode = 'baseline', hourlyRate = 23 }) => {
         <div className="weekly-controls">
           <div className="scenario-selector">
             <label>Hourly Rate:</label>
-            <select 
-              value={selectedScenario} 
+            <select
+              value={selectedScenario}
               onChange={(e) => setSelectedScenario(parseFloat(e.target.value))}
               className="scenario-select"
             >
@@ -228,7 +228,7 @@ const WeeklyTable = ({ mode = 'baseline', hourlyRate = 23 }) => {
           <h4>💡 Reading the Table</h4>
           <ul>
             <li><strong>Week 1</strong> includes Dad's upfront payment of $386.86</li>
-            <li><strong>Tax Reserve (40%)</strong> is calculated on Uber Gross only, not Tips</li>
+            <li><strong>Tax Reserve (25%)</strong> is calculated on Uber Gross only, not Tips</li>
             <li><strong>Cumulative</strong> shows running total after all expenses</li>
             <li><strong>Green values</strong> indicate profit, <strong>red</strong> indicates loss</li>
             <li>All values exclude Yoga income (shown separately in Monthly view)</li>
