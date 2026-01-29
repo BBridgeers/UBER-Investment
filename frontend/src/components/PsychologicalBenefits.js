@@ -103,8 +103,8 @@ const PsychologicalBenefits = ({ benefits }) => {
       {/* Impact Metrics Grid */}
       <div className="impact-metrics-grid">
         {impactMetrics.map((metric, index) => (
-          <div 
-            key={index} 
+          <div
+            key={index}
             className="metric-card card-3d"
             style={{ borderColor: `${metric.color}40` }}
           >
@@ -112,8 +112,8 @@ const PsychologicalBenefits = ({ benefits }) => {
               {metric.icon}
             </div>
             <div className="metric-value" style={{ color: metric.color }}>
-              <CountUp 
-                end={metric.value} 
+              <CountUp
+                end={metric.value}
                 duration={2.5}
                 decimals={metric.value % 1 !== 0 ? 1 : 0}
                 suffix={metric.suffix}
@@ -131,14 +131,13 @@ const PsychologicalBenefits = ({ benefits }) => {
           <span className="research-icon">🔬</span>
           Research-Validated Benefits
         </h3>
-        
+
         <div className="research-grid">
           {benefits.map((benefit, index) => (
-            <div 
-              key={index} 
-              className={`research-card card-3d ${
-                selectedBenefit === index ? 'expanded' : ''
-              }`}
+            <div
+              key={index}
+              className={`research-card card-3d ${selectedBenefit === index ? 'expanded' : ''
+                }`}
               onClick={() => setSelectedBenefit(selectedBenefit === index ? null : index)}
             >
               <div className="research-header">
@@ -200,11 +199,11 @@ const PsychologicalBenefits = ({ benefits }) => {
           <span className="improvements-icon">✨</span>
           Comprehensive Life Quality Improvements
         </h3>
-        
+
         <div className="improvements-grid">
           {lifeImprovements.map((category, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="improvement-category card-3d"
               style={{ borderLeftColor: category.color }}
             >
@@ -232,16 +231,16 @@ const PsychologicalBenefits = ({ benefits }) => {
           <span className="timeline-icon">📅</span>
           Timeline of Psychological Transformation
         </h3>
-        
+
         <div className="psych-timeline">
           <div className="timeline-item">
             <div className="timeline-marker" style={{ background: '#4ade80' }}>
-              Day 1
+              Day<br />1
             </div>
             <div className="timeline-content">
               <h5>Immediate Liberation</h5>
               <p>
-                Physical freedom achieved. Independent mobility restored. 
+                Physical freedom achieved. Independent mobility restored.
                 First experience of autonomous decision-making creates immediate confidence boost.
               </p>
             </div>
@@ -249,12 +248,12 @@ const PsychologicalBenefits = ({ benefits }) => {
 
           <div className="timeline-item">
             <div className="timeline-marker" style={{ background: '#FFD700' }}>
-              Week 1
+              Week<br />1
             </div>
             <div className="timeline-content">
               <h5>Confidence Building</h5>
               <p>
-                First successful week of self-sustaining income. Demonstrating capability to yourself 
+                First successful week of self-sustaining income. Demonstrating capability to yourself
                 and family. Confidence in your abilities grows with each day.
               </p>
             </div>
@@ -262,12 +261,12 @@ const PsychologicalBenefits = ({ benefits }) => {
 
           <div className="timeline-item">
             <div className="timeline-marker" style={{ background: '#B87333' }}>
-              Month 1
+              Month<br />1
             </div>
             <div className="timeline-content">
               <h5>Identity Shift</h5>
               <p>
-                Professional driver status established. Contributing family member identity. 
+                Professional driver status established. Contributing family member identity.
                 Helping family financially while building your own future.
               </p>
             </div>
@@ -275,12 +274,12 @@ const PsychologicalBenefits = ({ benefits }) => {
 
           <div className="timeline-item">
             <div className="timeline-marker" style={{ background: '#60a5fa' }}>
-              Month 3
+              Month<br />3
             </div>
             <div className="timeline-content">
               <h5>Future Planning Enabled</h5>
               <p>
-                Accumulated savings enable thinking about growth opportunities. 
+                Accumulated savings enable thinking about growth opportunities.
                 Planning for independent housing, career advancement, and personal goals becomes reality.
               </p>
             </div>
@@ -288,12 +287,12 @@ const PsychologicalBenefits = ({ benefits }) => {
 
           <div className="timeline-item">
             <div className="timeline-marker" style={{ background: '#a78bfa' }}>
-              Month 6
+              Month<br />6
             </div>
             <div className="timeline-content">
               <h5>Complete Transformation</h5>
               <p>
-                From dependent to independent and thriving. Established track record 
+                From dependent to independent and thriving. Established track record
                 of financial responsibility. Ready for next life chapter with proven capability and confidence.
               </p>
             </div>
@@ -307,29 +306,29 @@ const PsychologicalBenefits = ({ benefits }) => {
           <div className="perspective-icon">👨‍👦</div>
           <h3 className="perspective-title">Investment in Your Son's Future: Beyond the Numbers</h3>
         </div>
-        
+
         <div className="perspective-content">
           <div className="perspective-block">
             <h4>What You're Really Investing In:</h4>
             <ul className="perspective-list">
               <li>
-                <strong>Launching independence:</strong> Your son gains vehicle 
+                <strong>Launching independence:</strong> Your son gains vehicle
                 independence immediately, establishing foundation for self-sufficiency.
               </li>
               <li>
-                <strong>Demonstrating capability:</strong> $686.86 provides the opportunity to prove 
+                <strong>Demonstrating capability:</strong> $686.86 provides the opportunity to prove
                 financial responsibility. First week shows promise, six months confirms success.
               </li>
               <li>
-                <strong>Strengthening family bonds:</strong> Becoming financially independent allows 
+                <strong>Strengthening family bonds:</strong> Becoming financially independent allows
                 him to contribute to the family and eventually provide support.
               </li>
               <li>
-                <strong>Wellbeing investment:</strong> Research proves vehicle ownership improves mental health. 
+                <strong>Wellbeing investment:</strong> Research proves vehicle ownership improves mental health.
                 You're investing in your son's psychological growth, not just transportation.
               </li>
               <li>
-                <strong>Opportunity access:</strong> Vehicle ownership increases employment opportunities 
+                <strong>Opportunity access:</strong> Vehicle ownership increases employment opportunities
                 by 2.7x, opening doors to career advancement and growth.
               </li>
             </ul>

@@ -187,6 +187,10 @@ const Dashboard = () => {
               <span className="tab-icon">🧠</span>
               <span>Psychology</span>
             </TabsTrigger>
+            <TabsTrigger value="credit-path" className="tab-trigger">
+              <span className="tab-icon">🎯</span>
+              <span>Credit Path</span>
+            </TabsTrigger>
             <TabsTrigger value="calculator" className="tab-trigger">
               <span className="tab-icon">🔢</span>
               <span>Calculator</span>
@@ -194,10 +198,6 @@ const Dashboard = () => {
             <TabsTrigger value="scenarios" className="tab-trigger">
               <span className="tab-icon">💾</span>
               <span>Scenarios</span>
-            </TabsTrigger>
-            <TabsTrigger value="credit-path" className="tab-trigger">
-              <span className="tab-icon">📈</span>
-              <span>Credit Path</span>
             </TabsTrigger>
           </TabsList>
 

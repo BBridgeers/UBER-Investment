@@ -279,9 +279,12 @@
 
 .category-title {
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #ffffff;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.3;
 }
 
 .improvements-list {
@@ -348,18 +351,21 @@
 .timeline-marker {
   position: absolute;
   left: -3rem;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.55rem;
   font-weight: 700;
   color: #000;
   box-shadow: 0 0 20px currentColor;
   z-index: 1;
+  text-align: center;
+  line-height: 1.1;
+  padding: 2px;
 }
 
 .timeline-content {
