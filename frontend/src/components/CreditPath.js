@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Area, AreaChart } from 'recharts';
 import './CreditPath.css';
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+
 const CreditPath = () => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -31,8 +33,7 @@ const CreditPath = () => {
 
     const fetchCreditPathData = async () => {
         try {
-            const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
-            const response = await fetch(`${backendUrl}/api/credit-path`);
+            const response = await fetch(`${BACKEND_URL}/api/credit-path`);
             if (!response.ok) throw new Error('Failed to fetch credit path data');
             const result = await response.json();
             setData(result);

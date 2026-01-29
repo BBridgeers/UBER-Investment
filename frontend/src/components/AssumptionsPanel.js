@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './AssumptionsPanel.css';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
 const API = `${BACKEND_URL}/api`;
 
 const AssumptionsPanel = ({ onAssumptionsChange }) => {
@@ -35,6 +35,7 @@ const AssumptionsPanel = ({ onAssumptionsChange }) => {
   const handleChange = (key, value) => {
     const newAssumptions = { ...assumptions, [key]: parseFloat(value) };
     setAssumptions(newAssumptions);
+    setMode('custom');
   };
 
   const handleSave = async () => {
@@ -49,7 +50,7 @@ const AssumptionsPanel = ({ onAssumptionsChange }) => {
 
       await axios.post(`${API}/assumptions`, updates);
       setMode('custom');
-      
+
       if (onAssumptionsChange) {
         onAssumptionsChange(assumptions);
       }
@@ -66,7 +67,7 @@ const AssumptionsPanel = ({ onAssumptionsChange }) => {
       const response = await axios.post(`${API}/assumptions/reset`);
       setAssumptions(response.data.current);
       setMode('baseline');
-      
+
       if (onAssumptionsChange) {
         onAssumptionsChange(response.data.current);
       }
@@ -82,6 +83,13 @@ const AssumptionsPanel = ({ onAssumptionsChange }) => {
 
   const isChanged = (key) => {
     return assumptions && baseline && assumptions[key] !== baseline[key];
+  };
+
+  const hasChanges = () => {
+    if (!assumptions || !baseline) {
+      return false;
+    }
+    return Object.keys(assumptions).some((key) => assumptions[key] !== baseline[key]);
   };
 
   if (loading || !schema) {
@@ -106,7 +114,7 @@ const AssumptionsPanel = ({ onAssumptionsChange }) => {
         <button
           className="control-btn save-btn"
           onClick={handleSave}
-          disabled={saving || mode === 'baseline'}
+          disabled={saving || !hasChanges()}
         >
           {saving ? 'Saving...' : '💾 Save Changes'}
         </button>
@@ -200,7 +208,7 @@ const AssumptionsPanel = ({ onAssumptionsChange }) => {
           <ul>
             <li>Adjust any assumption to run "what if" scenarios</li>
             <li>Changed values are highlighted in gold</li>
-            <li>All calculations update automatically</li>
+            <li>Save changes to update calculations</li>
             <li>Save scenarios for comparison</li>
             <li>Reset individual fields or all at once</li>
           </ul>

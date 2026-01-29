@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ScenarioManager.css';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
 const API = `${BACKEND_URL}/api`;
 
 const ScenarioManager = () => {
@@ -32,7 +32,7 @@ const ScenarioManager = () => {
         <span className="title-icon">💾</span>
         Saved Scenarios
       </h2>
-      
+
       {scenarios.length === 0 ? (
         <div className="empty-state card-3d">
           <p>No saved scenarios yet. Use the calculator to create and save custom scenarios.</p>
