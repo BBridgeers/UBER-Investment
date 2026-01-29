@@ -34,7 +34,7 @@ const InteractiveCalculator = ({ onCalculate }) => {
         }
       });
       setCalculations(response.data.avis_rental);
-      
+
       // Update parent component
       if (onCalculate) {
         onCalculate(inputs);
@@ -119,11 +119,11 @@ const InteractiveCalculator = ({ onCalculate }) => {
               <label className="input-label">Hours Per Week</label>
               <div className="input-value">{inputs.hoursPerWeek} hrs</div>
             </div>
-            <input 
-              type="range" 
+            <input
+              type="range"
               className="slider"
-              min="20" 
-              max="70" 
+              min="20"
+              max="70"
               step="1"
               value={inputs.hoursPerWeek}
               onChange={(e) => handleChange('hoursPerWeek', e.target.value)}
@@ -141,11 +141,11 @@ const InteractiveCalculator = ({ onCalculate }) => {
               <label className="input-label">Expected Hourly Rate</label>
               <div className="input-value">${inputs.hourlyRate}/hr</div>
             </div>
-            <input 
-              type="range" 
+            <input
+              type="range"
               className="slider"
-              min="15" 
-              max="35" 
+              min="15"
+              max="35"
               step="0.5"
               value={inputs.hourlyRate}
               onChange={(e) => handleChange('hourlyRate', e.target.value)}
@@ -163,11 +163,11 @@ const InteractiveCalculator = ({ onCalculate }) => {
               <label className="input-label">Projection Timeline</label>
               <div className="input-value">{inputs.months} months</div>
             </div>
-            <input 
-              type="range" 
+            <input
+              type="range"
               className="slider"
-              min="1" 
-              max="12" 
+              min="1"
+              max="12"
               step="1"
               value={inputs.months}
               onChange={(e) => handleChange('months', e.target.value)}
@@ -185,11 +185,11 @@ const InteractiveCalculator = ({ onCalculate }) => {
               <label className="input-label">Free Charging Mix</label>
               <div className="input-value">{inputs.freeChargingPercent}%</div>
             </div>
-            <input 
-              type="range" 
+            <input
+              type="range"
               className="slider"
-              min="0" 
-              max="100" 
+              min="0"
+              max="100"
               step="5"
               value={inputs.freeChargingPercent}
               onChange={(e) => handleChange('freeChargingPercent', e.target.value)}
@@ -204,14 +204,14 @@ const InteractiveCalculator = ({ onCalculate }) => {
           {/* Save Scenario */}
           <div className="save-section">
             <h4 className="save-title">Save This Scenario</h4>
-            <input 
+            <input
               type="text"
               className="scenario-name-input"
               placeholder="Enter scenario name..."
               value={scenarioName}
               onChange={(e) => setScenarioName(e.target.value)}
             />
-            <button 
+            <button
               className="save-btn"
               onClick={handleSaveScenario}
               disabled={saving || !scenarioName.trim()}
@@ -270,7 +270,7 @@ const InteractiveCalculator = ({ onCalculate }) => {
           {/* Detailed Breakdown */}
           <div className="breakdown-card card-3d">
             <h3 className="breakdown-title">Detailed Breakdown</h3>
-            
+
             <div className="breakdown-table">
               <div className="breakdown-row">
                 <div className="breakdown-label">Weekly Hours Driving</div>

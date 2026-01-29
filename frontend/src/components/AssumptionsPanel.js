@@ -50,7 +50,7 @@ const AssumptionsPanel = ({ onAssumptionsChange }) => {
 
       await axios.post(`${API}/assumptions`, updates);
       setMode('custom');
-      
+
       if (onAssumptionsChange) {
         onAssumptionsChange(assumptions);
       }
@@ -67,7 +67,7 @@ const AssumptionsPanel = ({ onAssumptionsChange }) => {
       const response = await axios.post(`${API}/assumptions/reset`);
       setAssumptions(response.data.current);
       setMode('baseline');
-      
+
       if (onAssumptionsChange) {
         onAssumptionsChange(response.data.current);
       }

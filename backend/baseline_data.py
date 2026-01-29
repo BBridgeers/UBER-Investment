@@ -28,7 +28,6 @@ def _parse_csv_value(value: str) -> Any:
         return float(numeric_candidate)
     return cleaned
 
-
 def load_csv(filename: str) -> List[Dict[str, Any]]:
     """Load CSV file and return as list of dicts"""
     filepath = ROOT_DIR / filename
