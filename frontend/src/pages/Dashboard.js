@@ -245,6 +245,10 @@ const Dashboard = () => {
               />
             </TabsContent>
 
+            <TabsContent value="credit-path" className="tab-content">
+              <CreditPath />
+            </TabsContent>
+
             <TabsContent value="calculator" className="tab-content">
               <InteractiveCalculator
                 onCalculate={handleCalculationUpdate}
@@ -253,10 +257,6 @@ const Dashboard = () => {
 
             <TabsContent value="scenarios" className="tab-content">
               <ScenarioManager />
-            </TabsContent>
-
-            <TabsContent value="credit-path" className="tab-content">
-              <CreditPath />
             </TabsContent>
           </div>
         </Tabs>
