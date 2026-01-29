@@ -31,7 +31,8 @@ const CreditPath = () => {
 
     const fetchCreditPathData = async () => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:8001'}/api/credit-path`);
+            const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
+            const response = await fetch(`${backendUrl}/api/credit-path`);
             if (!response.ok) throw new Error('Failed to fetch credit path data');
             const result = await response.json();
             setData(result);

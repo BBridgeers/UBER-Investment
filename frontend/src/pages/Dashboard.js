@@ -114,7 +114,8 @@ const Dashboard = () => {
           <div className="header-left">
             <h1 className="header-title">
               <span className="title-main">EXIT PROTOCOL</span>
-              <span className="title-sub">From Dependent to Sovereign : Independence Dashboard</span>
+              <span className="title-sub">From Dependent to Sovereign</span>
+              <span className="title-sub-line2">Independence Dashboard</span>
             </h1>
           </div>
           <div className="header-right">
