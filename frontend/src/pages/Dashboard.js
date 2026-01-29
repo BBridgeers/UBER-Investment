@@ -14,7 +14,7 @@ import CreditPath from '../components/CreditPath';
 import { generatePDF } from '../utils/pdfGenerator';
 import './Dashboard.css';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
 const API = `${BACKEND_URL}/api`;
 
 const Dashboard = () => {
@@ -43,8 +43,11 @@ const Dashboard = () => {
       setAssumptions(assumptionsResponse.data.current);
       setMode(assumptionsResponse.data.mode);
 
-      // Fetch calculations (use legacy endpoint for now)
-      const calcResponse = await axios.get(`${API}/calculate-all?hours_per_week=48&hourly_rate=23&months=6`);
+      // Fetch calculations (legacy format from engine)
+      const hourlyRate = assumptionsResponse.data.current?.hourly_rate || 23;
+      const calcResponse = await axios.get(
+        `${API}/calculate-engine?hourly_rate=${hourlyRate}&months=6&legacy_format=true`
+      );
       setCalculations(calcResponse.data);
 
       setLoading(false);
@@ -55,10 +58,12 @@ const Dashboard = () => {
   };
 
   const handleAssumptionsChange = async (newAssumptions) => {
-    // Recalculate with new assumptions (use legacy endpoint)
+    // Recalculate with new assumptions (legacy format from engine)
     try {
       const hourlyRate = newAssumptions.hourly_rate || 23;
-      const calcResponse = await axios.get(`${API}/calculate-all?hours_per_week=48&hourly_rate=${hourlyRate}&months=6`);
+      const calcResponse = await axios.get(
+        `${API}/calculate-engine?hourly_rate=${hourlyRate}&months=6&legacy_format=true`
+      );
       setCalculations(calcResponse.data);
       setAssumptions(newAssumptions);
       setMode('custom');
@@ -69,11 +74,12 @@ const Dashboard = () => {
 
   const handleCalculationUpdate = async (inputs) => {
     try {
-      const response = await axios.get(`${API}/calculate-all`, {
+      const response = await axios.get(`${API}/calculate-engine`, {
         params: {
           hours_per_week: inputs.hoursPerWeek,
           hourly_rate: inputs.hourlyRate,
-          months: inputs.months
+          months: inputs.months,
+          legacy_format: true
         }
       });
       setCalculations(response.data);

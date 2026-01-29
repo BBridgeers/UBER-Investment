@@ -10,22 +10,22 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #000000;
+  background: var(--bg-primary);
   color: #ffffff;
 }
 
 .App {
   min-height: 100vh;
-  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  background: transparent;
 }
 
 /* Futuristic glow effects */
 .glow-gold {
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3), 0 0 40px rgba(255, 215, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.35), 0 0 40px rgba(0, 229, 255, 0.2);
 }
 
 .glow-copper {
-  box-shadow: 0 0 20px rgba(184, 115, 51, 0.3), 0 0 40px rgba(184, 115, 51, 0.2);
+  box-shadow: 0 0 20px rgba(255, 43, 214, 0.35), 0 0 40px rgba(255, 43, 214, 0.2);
 }
 
 /* 3D Effects */
@@ -40,14 +40,14 @@ body {
 
 /* Gradient text */
 .text-gradient-gold {
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  background: linear-gradient(135deg, #00e5ff 0%, #7ef9ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-copper {
-  background: linear-gradient(135deg, #B87333 0%, #CD853F 100%);
+  background: linear-gradient(135deg, #ff2bd6 0%, #ff71f5 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -59,14 +59,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: #0c1222;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #FFD700 0%, #B87333 100%);
+  background: linear-gradient(135deg, #00e5ff 0%, #ff2bd6 100%);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #FFA500 0%, #CD853F 100%);
+  background: linear-gradient(135deg, #7ef9ff 0%, #ff71f5 100%);
 }

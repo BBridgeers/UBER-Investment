@@ -3,6 +3,7 @@ Baseline data loader - loads all pre-parsed CSV/JSON baseline data
 """
 import json
 import csv
+import re
 from pathlib import Path
 from typing import Dict, List, Any
 
@@ -14,12 +15,29 @@ def load_json(filename: str) -> Dict[str, Any]:
     with open(filepath, 'r') as f:
         return json.load(f)
 
+def _parse_csv_value(value: str) -> Any:
+    if value is None:
+        return None
+    cleaned = value.strip()
+    if cleaned == "":
+        return None
+    numeric_candidate = cleaned.replace(",", "")
+    if re.fullmatch(r"-?\d+", numeric_candidate):
+        return int(numeric_candidate)
+    if re.fullmatch(r"-?\d*\.\d+", numeric_candidate):
+        return float(numeric_candidate)
+    return cleaned
+
+
 def load_csv(filename: str) -> List[Dict[str, Any]]:
     """Load CSV file and return as list of dicts"""
     filepath = ROOT_DIR / filename
     with open(filepath, 'r') as f:
         reader = csv.DictReader(f)
-        return list(reader)
+        return [
+            {key: _parse_csv_value(value) for key, value in row.items()}
+            for row in reader
+        ]
 
 # Load baseline defaults
 BASELINE_DEFAULTS = load_json('baseline_defaults.json')

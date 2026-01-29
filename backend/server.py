@@ -21,9 +21,12 @@ ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
 # MongoDB connection
-mongo_url = os.environ['MONGO_URL']
+mongo_url = os.getenv("MONGO_URL")
+db_name = os.getenv("DB_NAME")
+if not mongo_url or not db_name:
+    raise RuntimeError("Missing required environment variables: MONGO_URL and DB_NAME must be set.")
 client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+db = client[db_name]
 
 # Create the main app without a prefix
 app = FastAPI()
@@ -41,6 +44,7 @@ current_mode = "baseline"  # "baseline" or "custom"
 # Assumptions Model
 class AssumptionsUpdate(BaseModel):
     hours_per_week: Optional[float] = None
+    hourly_rate: Optional[float] = None
     tips_per_week: Optional[float] = None
     rental_per_week_total: Optional[float] = None
     charging_per_week: Optional[float] = None
@@ -199,6 +203,104 @@ def calculate_with_engine(hourly_rate: float, assumptions_dict: Dict[str, Any] =
         "quarterly_3p": quarterly_3p,
         "roi": roi_data,
         "assumptions": assumptions_dict
+    }
+
+
+def build_avis_legacy_from_engine(
+    hourly_rate: float,
+    assumptions_dict: Dict[str, Any],
+    months: int
+) -> Dict[str, Any]:
+    """Build legacy-style AVIS results using the knobs-enabled engine."""
+    engine_result = calculate_with_engine(hourly_rate, assumptions_dict)
+    monthly_rollup = engine_result["monthly"]
+    roi_data = engine_result["roi"]
+
+    hours_per_week = assumptions_dict.get("hours_per_week", 48)
+    tips_per_week = assumptions_dict.get("tips_per_week", 18.0)
+    rental_per_week_total = assumptions_dict.get("rental_per_week_total", 386.86)
+    charging_per_week = assumptions_dict.get("charging_per_week", 15.47)
+    buffer_per_week = assumptions_dict.get("buffer_per_week", 50.0)
+    tax_rate = assumptions_dict.get("tax_reserve_rate_on_uber_gross", 0.25)
+    dad_upfront_week1_only = assumptions_dict.get("dad_upfront_week1_only", 686.86)
+    yoga_income_per_4wk_block = assumptions_dict.get("yoga_income_per_4wk_block", 480.0)
+
+    uber_gross_weekly = hours_per_week * hourly_rate
+    weekly_earnings = uber_gross_weekly + tips_per_week
+    monthly_uber_gross = uber_gross_weekly * 4.33
+    monthly_earnings = (weekly_earnings * 4.33) + (yoga_income_per_4wk_block / 4 * 4.33)
+    weekly_costs = rental_per_week_total + charging_per_week + buffer_per_week
+    monthly_costs = weekly_costs * 4.33
+    monthly_tax_reserve = monthly_uber_gross * tax_rate
+    monthly_net = monthly_earnings - monthly_costs - monthly_tax_reserve
+
+    six_month_net = monthly_rollup[-1]["cumulative_net_after_dad_plus_yoga"] if monthly_rollup else 0.0
+    payback_week = roi_data.get("payback_week")
+
+    month_projections = []
+    cumulative = 0.0
+    for index, month in enumerate(monthly_rollup, start=1):
+        net = month.get("net_after_dad_plus_yoga", 0.0)
+        cumulative = month.get("cumulative_net_after_dad_plus_yoga", cumulative + net)
+        if index == months:
+            cumulative += assumptions_dict.get("avis_deposit", 300.0)
+
+        month_projections.append({
+            "month": index,
+            "income": monthly_earnings,
+            "costs": monthly_costs,
+            "tax_reserve": monthly_tax_reserve,
+            "net": net,
+            "cumulative": cumulative,
+            "net_after_dad_plus_yoga": net,
+            "cumulative_net_after_dad_plus_yoga": cumulative
+        })
+
+    current_uber_monthly = 650.0
+    total_uber_eliminated = current_uber_monthly * months
+
+    return {
+        "weekly_earnings": weekly_earnings,
+        "monthly_earnings": monthly_earnings,
+        "weekly_costs": weekly_costs,
+        "monthly_costs": monthly_costs,
+        "monthly_tax_reserve": monthly_tax_reserve,
+        "monthly_net": monthly_net,
+        "initial_investment": dad_upfront_week1_only,
+        "six_month_net": six_month_net,
+        "six_month_net_with_deposit": six_month_net,
+        "total_uber_eliminated": total_uber_eliminated,
+        "total_benefit": six_month_net + total_uber_eliminated,
+        "projections": month_projections,
+        "break_even_weeks": payback_week or 0
+    }
+
+
+def build_legacy_payload(
+    hourly_rate: float,
+    months: int,
+    assumptions_dict: Dict[str, Any]
+) -> Dict[str, Any]:
+    """Build legacy dashboard payload while honoring knobs-enabled assumptions."""
+    inputs = ScenarioInputs(
+        hours_per_week=assumptions_dict.get("hours_per_week", 48.0),
+        hourly_rate=hourly_rate,
+        months=months
+    )
+
+    avis = build_avis_legacy_from_engine(hourly_rate, assumptions_dict, months)
+    beater = calculate_scenario(inputs, "beater_car")
+    hybrid = calculate_scenario(inputs, "hybrid")
+
+    return {
+        "avis_rental": avis,
+        "beater_car": beater,
+        "hybrid": hybrid,
+        "comparison": {
+            "best_option": "avis_rental",
+            "avis_advantage_vs_beater": avis["six_month_net"] - beater["six_month_net"],
+            "avis_advantage_vs_hybrid": avis["six_month_net"] - hybrid["six_month_net"]
+        }
     }
 
 
@@ -524,13 +626,21 @@ async def get_baseline_milestones():
 
 @api_router.get("/calculate-engine")
 async def calculate_engine(
-    hourly_rate: float = 23.0,
-    use_baseline: bool = False
+    hourly_rate: Optional[float] = None,
+    hours_per_week: Optional[float] = None,
+    use_baseline: bool = False,
+    legacy_format: bool = False,
+    months: int = 6
 ):
     """Calculate using model_engine.py with current or baseline assumptions"""
     assumptions_to_use = baseline_data.BASELINE_DEFAULTS if use_baseline else current_assumptions
-    result = calculate_with_engine(hourly_rate, assumptions_to_use)
-    return result
+    effective_assumptions = assumptions_to_use.copy()
+    if hours_per_week is not None:
+        effective_assumptions["hours_per_week"] = hours_per_week
+    effective_hourly_rate = hourly_rate if hourly_rate is not None else assumptions_to_use.get("hourly_rate", 23.0)
+    if legacy_format:
+        return build_legacy_payload(effective_hourly_rate, months, effective_assumptions)
+    return calculate_with_engine(effective_hourly_rate, effective_assumptions)
 
 @api_router.get("/calculate-scenarios")
 async def calculate_all_scenarios_engine(use_baseline: bool = False):
@@ -731,10 +841,13 @@ async def delete_scenario(scenario_id: str):
 # Include the router in the main app
 app.include_router(api_router)
 
+cors_origins = [origin.strip() for origin in os.getenv("CORS_ORIGINS", "http://localhost:3000").split(",") if origin.strip()]
+allow_credentials = "*" not in cors_origins
+
 app.add_middleware(
     CORSMiddleware,
-    allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
+    allow_credentials=allow_credentials,
+    allow_origins=cors_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )

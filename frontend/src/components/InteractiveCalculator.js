@@ -3,7 +3,7 @@ import axios from 'axios';
 import CountUp from 'react-countup';
 import './InteractiveCalculator.css';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
 const API = `${BACKEND_URL}/api`;
 
 const InteractiveCalculator = ({ onCalculate }) => {
@@ -25,11 +25,12 @@ const InteractiveCalculator = ({ onCalculate }) => {
 
   const calculateResults = async () => {
     try {
-      const response = await axios.get(`${API}/calculate-all`, {
+      const response = await axios.get(`${API}/calculate-engine`, {
         params: {
           hours_per_week: inputs.hoursPerWeek,
           hourly_rate: inputs.hourlyRate,
-          months: inputs.months
+          months: inputs.months,
+          legacy_format: true
         }
       });
       setCalculations(response.data.avis_rental);
