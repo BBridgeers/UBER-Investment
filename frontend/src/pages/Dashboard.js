@@ -113,8 +113,8 @@ const Dashboard = () => {
         <div className="header-content">
           <div className="header-left">
             <h1 className="header-title">
-              <span className="title-main">Transportation Independence</span>
-              <span className="title-sub">Investment Analysis & Decision Tool</span>
+              <span className="title-main">EXIT PROTOCOL</span>
+              <span className="title-sub">From Dependent to Sovereign : Independence Dashboard</span>
             </h1>
           </div>
           <div className="header-right">
