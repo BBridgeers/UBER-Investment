@@ -14,6 +14,7 @@ import json
 # Import model engine and baseline data
 from model_engine import Assumptions, compute_weekly_engine, rollup_4wk, rollup_13wk, rollup_3period, roi
 import baseline_data
+import credit_path_data
 
 
 ROOT_DIR = Path(__file__).parent
@@ -428,6 +429,13 @@ def calculate_scenario(inputs: ScenarioInputs, scenario_type: str = "avis_rental
 @api_router.get("/")
 async def root():
     return {"message": "Transportation Independence Investment API"}
+
+# ==================== CREDIT PATH ENDPOINT ====================
+
+@api_router.get("/credit-path")
+async def get_credit_path():
+    """Get all credit building strategy data for 90-Day Credit Path tab"""
+    return credit_path_data.get_credit_path_data()
 
 # ==================== NEW KNOBS/ASSUMPTIONS ENDPOINTS ====================
 

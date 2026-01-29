@@ -10,6 +10,7 @@ import InteractiveCalculator from '../components/InteractiveCalculator';
 import ScenarioManager from '../components/ScenarioManager';
 import AssumptionsPanel from '../components/AssumptionsPanel';
 import WeeklyTable from '../components/WeeklyTable';
+import CreditPath from '../components/CreditPath';
 import { generatePDF } from '../utils/pdfGenerator';
 import './Dashboard.css';
 
@@ -32,20 +33,20 @@ const Dashboard = () => {
   const fetchData = async () => {
     try {
       setLoading(true);
-      
+
       // Fetch default data (legacy)
       const defaultResponse = await axios.get(`${API}/default-data`);
       setDefaultData(defaultResponse.data);
-      
+
       // Fetch assumptions
       const assumptionsResponse = await axios.get(`${API}/assumptions`);
       setAssumptions(assumptionsResponse.data.current);
       setMode(assumptionsResponse.data.mode);
-      
+
       // Fetch calculations (use legacy endpoint for now)
       const calcResponse = await axios.get(`${API}/calculate-all?hours_per_week=48&hourly_rate=23&months=6`);
       setCalculations(calcResponse.data);
-      
+
       setLoading(false);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -122,7 +123,7 @@ const Dashboard = () => {
                 {mode === 'baseline' ? '📊 Baseline' : '✏️ Custom'}
               </span>
             </div>
-            <button 
+            <button
               className="pdf-export-btn"
               onClick={handleGeneratePDF}
               disabled={generatingPDF}
@@ -194,60 +195,68 @@ const Dashboard = () => {
               <span className="tab-icon">💾</span>
               <span>Scenarios</span>
             </TabsTrigger>
+            <TabsTrigger value="credit-path" className="tab-trigger">
+              <span className="tab-icon">📈</span>
+              <span>Credit Path</span>
+            </TabsTrigger>
           </TabsList>
 
           <div className="tab-content-wrapper">
             <TabsContent value="overview" className="tab-content">
-              <ExecutiveSummary 
+              <ExecutiveSummary
                 calculations={calculations}
                 defaultData={defaultData}
               />
             </TabsContent>
 
             <TabsContent value="assumptions" className="tab-content">
-              <AssumptionsPanel 
+              <AssumptionsPanel
                 onAssumptionsChange={handleAssumptionsChange}
               />
             </TabsContent>
 
             <TabsContent value="weekly" className="tab-content">
-              <WeeklyTable 
+              <WeeklyTable
                 mode={mode}
               />
             </TabsContent>
 
             <TabsContent value="financial" className="tab-content">
-              <FinancialComparison 
+              <FinancialComparison
                 calculations={calculations}
               />
             </TabsContent>
 
             <TabsContent value="charging" className="tab-content">
-              <ChargingStrategy 
+              <ChargingStrategy
                 chargingLocations={defaultData?.charging_locations || []}
               />
             </TabsContent>
 
             <TabsContent value="projections" className="tab-content">
-              <IncomeProjection 
+              <IncomeProjection
                 calculations={calculations}
               />
             </TabsContent>
 
             <TabsContent value="psychology" className="tab-content">
-              <PsychologicalBenefits 
+              <PsychologicalBenefits
                 benefits={defaultData?.psychological_benefits || []}
               />
             </TabsContent>
 
             <TabsContent value="calculator" className="tab-content">
-              <InteractiveCalculator 
+              <InteractiveCalculator
                 onCalculate={handleCalculationUpdate}
               />
             </TabsContent>
 
             <TabsContent value="scenarios" className="tab-content">
               <ScenarioManager />
+            </TabsContent>
+
+            <TabsContent value="credit-path" className="tab-content">
+              <CreditPath />
             </TabsContent>
           </div>
         </Tabs>
